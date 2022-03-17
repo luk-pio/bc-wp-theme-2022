@@ -9,10 +9,16 @@
 
 @import "flexbox";
 
-.body {
-    color: red
+.bc-header-container {
+    @include flexbox;
+    @include flex-direction(row);
+    @include justify-content(space-between)
 }
 
-.bc-header {
-    @include flexbox
+$breakpoints = { S: 530, M: 1024, L: 1900 }
+
+.${breakpoint.key}-flex-pos-${$pos} {
+    if width <= $breakpoint.value {
+        @import order($pos)
+    }
 }

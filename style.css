@@ -1,22 +1,17 @@
-@charset "UTF-8";
-/*
- Theme Name:   Berenika Czarnota 2022
- Theme URI:    http://example.com/
- Description:  Custom theme for Berenika Czarnota
- Author:       Dominika Michalska & Łukasz Piotrak
- Author URI:   http://example.com
- Version:      0.1.0
-*/
-.body {
-  color: red;
-}
+/* Error: expected ":".
+ *    ,
+ * 18 | $breakpoints = { S: 530, M: 1024, L: 1900 }
+ *    |              ^
+ *    '
+ *   styles/style.scss 18:14  root stylesheet */
 
-.bc-header {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: expected ":".\a    \2577 \a 18 \2502  $breakpoints = { S: 530, M: 1024, L: 1900 }\a    \2502               ^\a    \2575 \a   styles/style.scss 18:14  root stylesheet';
 }
-
-/*# sourceMappingURL=style.css.map */
