@@ -1,0 +1,52 @@
+@use "flexbox"
+@use "breakpoints"
+@use "colors"
+@use "spacing" as * 
+@use "layout"
+
+.bc-header-container
+    margin: spacing(2) spacing(6)
+    display: grid
+    grid-template-columns: fit-content(0px) auto auto
+    align-items: center
+    @include breakpoints.mobile
+        margin: spacing(1) spacing(2)
+        grid-template-columns: auto auto auto
+
+#bc-logo-container-header
+    width: fit-content
+    @include breakpoints.mobile
+        justify-self: center
+        @include layout.group(spacing(1), row)
+    @include breakpoints.tablet-or-desktop
+        margin-right: spacing(7)
+        @include layout.group(spacing(2))
+
+.bc-divider
+    height: 1px
+    background-color: colors.$black
+
+#mobile-menu-container
+    @include breakpoints.mobile
+        width: fit-content
+        @include layout.group(spacing(2))
+    @include breakpoints.tablet-or-desktop
+        display: none
+
+#menu-desktop-menu
+    @include breakpoints.mobile
+        display: none
+    @include breakpoints.tablet-or-desktop
+        text-transform: uppercase
+        @include layout.group(spacing(3))
+
+#header-container-right
+    justify-self: end
+    @include layout.group(spacing(3))
+
+#desktop-lang-picker
+    display: flex
+    align-items: center
+
+#bag-button
+    width: fit-content

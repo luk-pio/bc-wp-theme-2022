@@ -1,0 +1,11 @@
+@use "breakpoints"
+
+.hidden-mobile
+    @include breakpoints.mobile
+        display: none !important
+
+button
+    background-color: unset
+    border: none
+    &::selection
+        background: unset
