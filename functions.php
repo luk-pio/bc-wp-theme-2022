@@ -35,7 +35,7 @@ add_filter('locale', 'language');
 
 function language($locale) {
     $lang = get_locale_from_cookie($locale);
-    return $lang; 
+    return "pl_PL"; 
 }
 function get_locale_from_cookie($locale) {
   if(isset($_COOKIE["wp_locale"])) {
