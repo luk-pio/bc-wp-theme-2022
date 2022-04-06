@@ -20,7 +20,35 @@ function EnqueueMyStyles() {
 }
 add_action('wp_enqueue_scripts', 'EnqueueMyStyles');
 
-/**
+/*
+ * Load i18n
+ */
+function my_theme_load_theme_textdomain() {
+  load_theme_textdomain( 'bc-theme', get_template_directory() . '/languages' );
+}
+add_action( 'after_setup_theme', 'my_theme_load_theme_textdomain' );
+
+/*
+ * Load the locale language
+ */
+add_filter('locale', 'language');
+
+function language($locale) {
+    $lang = get_locale_from_cookie($locale);
+    return $lang; 
+}
+function get_locale_from_cookie($locale) {
+  if(isset($_COOKIE["wp_locale"])) {
+    return $_COOKIE["wp_locale"];
+  } else {
+    return $locale;
+  }
+}
+
+// load textdomain and .mo file if "lang" is set
+load_theme_textdomain('theme-domain', TEMPLATEPATH . '/lang');
+
+/*
  * Add SVG file upload
  */
 function add_file_types_to_uploads($file_types){
