@@ -8,6 +8,16 @@
     <meta charset="<?php bloginfo("charset"); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        @font-face {
+            font-family: Nunito;
+            src: url("https://fonts.googleapis.com/css?family=Nunito");
+            font-display: swap;
+        }
+    </style>
+
     <?php wp_head(); ?>
 
 </head>
@@ -30,13 +40,13 @@
             </div>
             <nav id="desktop-nav" class="hidden-mobile">
                 <?php
-                    wp_nav_menu(
-                        array(
-                            'menu' => 'header-menu',
-                            'container' => '',
-                            'theme_location' => 'header-menu',
-                        )
+                wp_nav_menu(
+                    array(
+                        'menu' => 'header-menu',
+                        'container' => '',
+                        'theme_location' => 'header-menu',
                     )
+                )
                 ?>
             </nav>
             <div id="header-container-right">
@@ -52,3 +62,5 @@
         </div>
         <div id="bc-header-divider" class="bc-divider"></div>
     </header>
+
+    <?php _e("English", "bc-theme"); ?>

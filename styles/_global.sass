@@ -1,8 +1,18 @@
 @use "breakpoints"
 
+$font-family: Nunito, Sans-Serif
+$font-color: black
+
+body
+    font-family: $font-family
+
 .hidden-mobile
     @include breakpoints.mobile
         display: none !important
+
+a 
+    color: $font-color
+    text-decoration: none
 
 button
     background-color: unset
