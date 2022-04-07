@@ -11,7 +11,7 @@
     align-items: center
     @include breakpoints.mobile
         margin: spacing(1) spacing(2)
-        grid-template-columns: auto auto auto
+        grid-template-columns: repeat(3, 1fr)
 
 #bc-logo-container-header
     width: fit-content
@@ -43,10 +43,6 @@
 #header-container-right
     justify-self: end
     @include layout.group(spacing(3))
-
-#desktop-lang-picker
-    display: flex
-    align-items: center
 
 #bag-button
     width: fit-content

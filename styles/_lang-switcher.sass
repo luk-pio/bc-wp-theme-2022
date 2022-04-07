@@ -1,0 +1,21 @@
+@use "spacing" as * 
+@use "layout"
+
+#desktop-lang-switcher
+    display: flex
+    align-items: center
+
+.lang-switcher
+    text-transform: uppercase
+    position: relative
+
+.current-language
+    @include layout.group(spacing(1))
+    padding: spacing(0.5)
+
+.language-dropdown-list
+    position: absolute
+    background-color: white
+    padding: spacing(0.5)
+    padding-top: spacing(1)
+    width: spacing(5)

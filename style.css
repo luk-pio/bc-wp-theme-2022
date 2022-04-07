@@ -2,6 +2,7 @@
 /*!
  Theme Name:   Berenika Czarnota 2022
  Theme URI:    http://example.com/
+ Text Domain:  bc-theme
  Description:  Custom theme for Berenika Czarnota
  Author:       Dominika Michalska & Łukasz Piotrak
  Author URI:   http://example.com
@@ -373,6 +374,36 @@ svg {
   display: block;
 }
 
+body {
+  font-family: Nunito, Sans-Serif;
+}
+
+@media (max-width: 845px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+button {
+  background-color: unset;
+  border: none;
+}
+button::-moz-selection {
+  background: unset;
+}
+button::selection {
+  background: unset;
+}
+
+.rot-180 {
+  transform: rotate(180deg);
+}
+
 .bc-header-container {
   margin: 16px 48px;
   display: grid;
@@ -382,7 +413,7 @@ svg {
 @media (max-width: 845px) {
   .bc-header-container {
     margin: 8px 16px;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -460,30 +491,35 @@ svg {
   grid-auto-flow: column;
 }
 
-#desktop-lang-picker {
-  display: flex;
-  align-items: center;
-}
-
 #bag-button {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-@media (max-width: 845px) {
-  .hidden-mobile {
-    display: none !important;
-  }
+#desktop-lang-switcher {
+  display: flex;
+  align-items: center;
 }
 
-button {
-  background-color: unset;
-  border: none;
+.lang-switcher {
+  text-transform: uppercase;
+  position: relative;
 }
-button::-moz-selection {
-  background: unset;
+
+.current-language {
+  display: inline-grid;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 8px;
+  grid-auto-flow: column;
+  padding: 4px;
 }
-button::selection {
-  background: unset;
+
+.language-dropdown-list {
+  position: absolute;
+  background-color: white;
+  padding: 4px;
+  padding-top: 8px;
+  width: 40px;
 }/*# sourceMappingURL=style.css.map */

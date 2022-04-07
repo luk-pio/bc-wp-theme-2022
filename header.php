@@ -10,12 +10,14 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
     <style>
-        @font-face {
-            font-family: Nunito;
-            src: url("https://fonts.googleapis.com/css?family=Nunito");
-            font-display: swap;
-        }
+    @font-face {
+        font-family: Nunito;
+        src: url("https://fonts.googleapis.com/css?family=Nunito");
+        font-display: swap;
+    }
     </style>
 
     <?php wp_head(); ?>
@@ -29,7 +31,7 @@
                 <div id="nav-burger" class="icon">
                     <?php get_template_part("static/icons/Icon", "Menu.svg"); ?>
                 </div>
-                <?php get_template_part("template-parts/lang", "picker") ?>
+                <?php echo bc_get_lang_switcher() ?>
             </div>
             <div id="bc-logo-container-header" class="bc-logo-container">
                 <span id="bc-logo-berenika" class="bc-logo-part">
@@ -50,8 +52,8 @@
                 ?>
             </nav>
             <div id="header-container-right">
-                <div id="desktop-lang-picker" class="hidden-mobile">
-                    <?php get_template_part("template-parts/lang", "picker") ?>
+                <div id="desktop-lang-switcher" class="hidden-mobile">
+                    <?php echo bc_get_lang_switcher() ?>
                 </div>
                 <button id="bag-button">
                     <div id="bc-bag" class="icon">
