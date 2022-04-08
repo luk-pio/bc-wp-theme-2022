@@ -11,6 +11,14 @@ function setup()
 }
 add_action("after_setup_theme", "setup");
 
+function bc_theme_mods()
+{
+  set_theme_mod('footer-animation', 'Animation-Footer');
+}
+
+add_action('init', 'bc_theme_mods');
+
+
 /**
  * Enqueue CSS
  */
@@ -60,6 +68,19 @@ function register_my_menus()
 }
 add_action('init', 'register_my_menus');
 
+function bc_get_attachment_url_by_slug($slug)
+{
+  $args = array(
+    'post_type' => 'attachment',
+    'name' => sanitize_title($slug),
+    'posts_per_page' => 1,
+    'post_status' => 'inherit',
+  );
+  $_header = get_posts($args);
+  $header = $_header ? array_pop($_header) : null;
+  return $header ? ($header->ID) : '';
+}
+
 function bc_get_current_language()
 {
   $trp = TRP_Translate_Press::get_trp_instance();
@@ -73,6 +94,7 @@ function bc_get_lang_switcher()
   $current_language = bc_get_current_language();
   $index = array_search($current_language, array_keys($languages_array));
   $current_language = $languages_array[$current_language];
+  array_splice($languages_array, $index, 1);
 ?>
 <div class="lang-switcher" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
     <div class="current-language">

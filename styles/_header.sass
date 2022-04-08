@@ -22,6 +22,12 @@
         margin-right: spacing(7)
         @include layout.group(spacing(2))
 
+.bc-logo-part
+    svg
+        @include breakpoints.mobile
+            height: 14px
+            width: auto
+
 .bc-divider
     height: 1px
     background-color: colors.$black

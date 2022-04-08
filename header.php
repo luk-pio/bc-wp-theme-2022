@@ -10,15 +10,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
 
-    <style>
-    @font-face {
-        font-family: Nunito;
-        src: url("https://fonts.googleapis.com/css?family=Nunito");
-        font-display: swap;
-    }
-    </style>
+    <script src="//unpkg.com/alpinejs" defer></script>
 
     <?php wp_head(); ?>
 
@@ -62,7 +56,8 @@
                 </button>
             </div>
         </div>
-        <div id="bc-header-divider" class="bc-divider"></div>
     </header>
 
-    <?php _e("English", "bc-theme"); ?>
+    <div style="height: 200px">
+        <?php _e("English", "bc-theme"); ?>
+    </div>
