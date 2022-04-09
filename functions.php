@@ -122,3 +122,4 @@ function bc_get_lang_switcher()
     </ul>
 </div><?php
       }
+        ?>

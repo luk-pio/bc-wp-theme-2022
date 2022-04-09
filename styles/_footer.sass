@@ -1,13 +1,27 @@
 @use "spacing" as * 
 @use "layout"
+@use "breakpoints"
 
 #bc-footer
-    padding: spacing(4) spacing(1) spacing(2) spacing(1)
+    padding: spacing(4) spacing(3)
+    @include breakpoints.mobile
+        padding: spacing(4) spacing(1) spacing(4) spacing(1)
 
 #footer-head
-    padding-bottom: spacing(1)
     display: flex
-    align-items: end
+    align-items: flex-end
+    padding-bottom: spacing(1)
+    padding-left: spacing(1)
+    @include breakpoints.tablet-or-desktop
+        padding: 0 spacing(3) spacing(1) spacing(3)
+
+#footer-content-container
+    @include layout.group(spacing(1), $display: grid)
+    justify-items: stretch
+    padding: 0 spacing(3) spacing(1) spacing(3)
+    @include breakpoints.mobile
+        grid-auto-flow: row
+        padding: 0 spacing(1)
 
 #footer-bc-logo-container
     margin-right: spacing(3)
@@ -16,37 +30,53 @@
     grid-gap: spacing(2)
     grid-auto-flow: row
 
+#footer-image-copy-container
+    @include layout.group(spacing(1), row)
+    justify-items: flex-end
+    @include breakpoints.desktop
+        grid-auto-flow: column
+
 #footer-image-container
-    width: 100%
+    width: auto
     display: flex
-    justify-content: end
+    justify-content: flex-end
     margin-top: spacing(3)
     margin-right: spacing(2)
 
 #footer-image
     margin-right: spacing(3)
+    width: 100%
+    @include breakpoints.mobile
+        max-width: 443px
+    @include breakpoints.tablet
+        max-width: 618px
+    @include breakpoints.desktop
+        max-width: 618px
 
 #footer-social
     display: grid
     @include layout.group(spacing(1.5))
 
 #menu-footer-menu
+    white-space: nowrap
     display: grid
     grid-template-rows: repeat(4, 1fr)
     grid-auto-flow: column
     grid-gap: spacing(3)
-    padding-left: spacing(1)
-    margin-top: spacing(3)
-    margin-bottom: spacing(4)
     font-size: 0.8rem
+    @include breakpoints.mobile
+        margin-top: spacing(3)
 
 #footer-copy
     text-align: end
+    align-self: flex-end
     margin-top: spacing(5)
     font-size: 0.6rem
+    @include layout.group(spacing(1), row)
+    justify-items: flex-end
+    @include breakpoints.tablet
+        grid-auto-flow: column
+        justify-items: center
 
 #wiseculture-url
     text-decoration: underline
-
-#footer-copywrite
-    margin-top: spacing(1)
