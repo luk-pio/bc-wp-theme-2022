@@ -1,4 +1,4 @@
 *.DS_Store
 .php-cs-fixer.cache
-tools/*
+tools/
 style.css.map
