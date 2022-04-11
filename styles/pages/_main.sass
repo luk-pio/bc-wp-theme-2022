@@ -1,0 +1,22 @@
+@use "../utils/layout"
+@use "../utils/spacing" as *
+@use "../utils/breakpoints"
+@use "../global/fonts"
+.bc-main
+    display: flex
+    flex-direction: column
+    margin-top: spacing(12)
+    margin-bottom: spacing(10)
+    @include breakpoints.mobile
+        margin-top: spacing(4)
+        padding: 0 spacing(2)
+        max-width: 500px
+    @include breakpoints.tablet
+        max-width: 70vw
+    @include breakpoints.desktop
+        max-width: 800px
+
+p
+    font-size: fonts.$font-small
+    line-height: 140%
+    font-weight: lighter

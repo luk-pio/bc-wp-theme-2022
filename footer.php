@@ -1,6 +1,6 @@
 <?php wp_footer(); ?>
 
-<footer id="bc-footer">
+<footer id="bc-footer" class="bounded">
     <div id="footer-head">
         <div id="footer-bc-logo-container" class="bc-logo-container">
             <span id="bc-logo-berenika" class="bc-logo-part">
@@ -10,10 +10,10 @@
                 <?php get_template_part("static/icons/Logo", "Czarnota.svg"); ?>
         </div>
         <div id="footer-social">
-            <a href="">
+            <a class="social-icon" href="https://www.instagram.com/berenika_cz/">
                 <?php get_template_part("static/icons/Icon", "IG.svg"); ?>
             </a>
-            <a href="">
+            <a class="social-icon" href="https://pl-pl.facebook.com/BerenikaCzarnota/">
                 <?php get_template_part("static/icons/Icon", "FB.svg"); ?>
             </a>
         </div>

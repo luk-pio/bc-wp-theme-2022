@@ -24,7 +24,7 @@ add_action('init', 'bc_theme_mods');
  */
 function EnqueueMyStyles()
 {
-  wp_enqueue_style('my-custom-style', get_template_directory_uri() . '/css/my-custom-style.css', false, '20150320');
+  wp_enqueue_script('custom-js', get_template_directory_uri() . '/scripts/customJs.js', array(), '1.0.0', true);
   wp_enqueue_style('my-main-style', get_stylesheet_uri(), false, '20150320');
 }
 add_action('wp_enqueue_scripts', 'EnqueueMyStyles');
@@ -107,19 +107,54 @@ function bc_get_lang_switcher()
     <ul x-show="open" x-transition.opacity class="language-dropdown-list">
         <?php foreach ($languages_array as $name => $item) {
       ?>
-        <li>
-            <?php
-          $trp = TRP_Translate_Press::get_trp_instance();
-          $url_converter = $trp->get_component('url_converter');
-          $url = $url_converter->get_url_for_language($item["language_code"], false);
-          ?>
-            <a href="<?php echo esc_url($url); ?>">
+        <?php
+        $trp = TRP_Translate_Press::get_trp_instance();
+        $url_converter = $trp->get_component('url_converter');
+        $url = $url_converter->get_url_for_language($item["language_code"], false);
+        ?>
+        <a href="<?php echo esc_url($url); ?>">
+            <li>
                 <span><?php echo $item['short_language_name'] ?></span>
-            </a>
-        </li>
+            </li>
+        </a>
         <?php
       } ?>
     </ul>
 </div><?php
       }
         ?>
+
+<?php
+function mytheme_add_woocommerce_support()
+{
+  add_theme_support('woocommerce', array(
+    'thumbnail_image_width' => 200,
+    'gallery_thumbnail_image_width' => 300,
+    'single_image_width' => 500,
+
+    'product_grid'          => array(
+      'default_rows'    => 3,
+      'min_rows'        => 2,
+      'max_rows'        => 4,
+      'default_columns' => 3,
+      'min_columns'     => 2,
+      'max_columns'     => 4,
+    ),
+  ));
+}
+add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
+
+/**
+ * Change a currency symbol
+ */
+add_filter('woocommerce_currency_symbol', 'change_existing_currency_symbol', 10, 2);
+
+function change_existing_currency_symbol($currency_symbol, $currency)
+{
+  switch ($currency) {
+    case 'PLN':
+      $currency_symbol = 'PLN';
+      break;
+  }
+  return $currency_symbol;
+}

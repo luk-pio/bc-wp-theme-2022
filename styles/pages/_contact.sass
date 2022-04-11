@@ -1,0 +1,41 @@
+@use "../utils/layout"
+@use "../utils/spacing" as *
+@use "../utils/breakpoints"
+@use "../global/fonts"
+@use "../global/mixins"
+
+#contact-main
+    h2
+        text-align: start
+        justify-self: flex-start
+        font-size: 1.25rem
+        font-weight: medium
+        text-transform: uppercase
+        margin-bottom: spacing(4)
+    p
+        text-align: justify
+        width: auto
+
+    .contact-profile-image
+        margin-bottom: spacing(8)
+        display: flex
+        justify-content: center
+        @include breakpoints.tablet-or-desktop
+            display: block
+            margin-right: spacing(7)
+        @include breakpoints.tablet
+            min-width: 190px
+        @include breakpoints.desktop
+            min-width: 250px
+
+        img
+            @include mixins.product-border
+
+    .bc-about-container
+        margin-bottom: spacing(10)
+        > .wp-block-group__inner-container
+            @include breakpoints.tablet-or-desktop
+                display: flex
+
+    .bc-about-section > .wp-block-group__inner-container
+        max-width: 500px

@@ -1,0 +1,80 @@
+@use "../utils/spacing" as *
+@use "../global/colors"
+form
+    p
+        display: flex
+        flex-direction: column
+        margin-bottom: spacing(2)
+
+    &.wpcf7-form
+        p
+            margin-bottom: spacing(2)
+        br
+            display: none
+
+    input[type="submit"]
+        padding: spacing(1) 0
+        width: 100%
+        background-color: black
+        border-radius: 4px
+        color: colors.$bc-neon-yellow
+        text-transform: uppercase
+        max-width: 288px
+
+label
+    margin-bottom: spacing(3)
+    position: relative
+    border-bottom: 0.6px solid #000000
+
+.bc-input
+    width: 100%
+    margin-top: 20px
+    border: none
+    outline: none
+    font-size: 1rem
+    &::placeholder
+        opacity: 0
+
+.bc-form-label
+    position: absolute
+    top: spacing(-1.5)
+    left: 0
+    transform: translateY(30px)
+    transition-duration: 300ms
+    color: colors.$font-secondary
+
+.input-unselected
+    transform: translateY(30px)
+    transition-duration: 300ms
+    color: colors.$font-secondary
+
+label:focus-within > span.bc-form-label,
+.input-selected
+    transform: translateY(spacing(1.5))
+    font-size: 0.8em
+    margin-left: 2px
+
+.wpcf7-not-valid-tip
+    color: colors.$warning-red
+    font-size: 0.75em !important
+    transform: none !important
+    font-weight: normal
+    display: absolute
+    position: absolute
+    top: 2em
+    left: 0px
+
+#bc-submit-container
+    display: flex
+    align-items: center
+
+.wpcf7 form .wpcf7-response-output
+    margin: 0
+    border: none
+    padding: spacing(2) 0
+
+.wpcf7 form.invalid .wpcf7-response-output
+    color: colors.$warning-red
+
+.wpcf7 form.sent .wpcf7-response-output
+    color: colors.$success-green

@@ -1,8 +1,7 @@
-@use "flexbox"
-@use "breakpoints"
-@use "colors"
-@use "spacing" as * 
-@use "layout"
+@use "../utils/breakpoints"
+@use "../global/colors"
+@use "../utils/spacing" as * 
+@use "../utils/layout"
 
 .bc-header-container
     margin: spacing(2) spacing(6)
@@ -10,7 +9,7 @@
     grid-template-columns: fit-content(0px) auto auto
     align-items: center
     @include breakpoints.mobile
-        margin: spacing(1) spacing(2)
+        margin: spacing(2) spacing(3)
         grid-template-columns: repeat(3, 1fr)
 
 #bc-logo-container-header
@@ -52,3 +51,21 @@
 
 #bag-button
     width: fit-content
+
+.content
+    padding: 16px
+
+#bc-header
+    background-color: white
+    z-index: 9999
+
+.sticky
+    position: fixed
+    top: 0
+    width: 100%
+    -webkit-box-shadow: 8px -1px 24px 0px rgba(66, 68, 90, 1)
+    -moz-box-shadow: 8px -1px 24px 0px rgba(66, 68, 90, 1)
+    box-shadow: 8px -1px 24px 0px rgba(66, 68, 90, 1)
+
+.sticky-header-offset
+    margin-top: 58px

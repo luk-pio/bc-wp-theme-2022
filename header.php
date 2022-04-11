@@ -10,7 +10,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap">
 
     <script src="//unpkg.com/alpinejs" defer></script>
 
@@ -18,8 +18,8 @@
 
 </head>
 
-<body>
-    <header class="bc-header">
+<body id="bc-body">
+    <header id="bc-header" class="bounded">
         <div class="bc-header-container">
             <div id="mobile-menu-container">
                 <div id="nav-burger" class="icon">
@@ -27,13 +27,13 @@
                 </div>
                 <?php echo bc_get_lang_switcher() ?>
             </div>
-            <div id="bc-logo-container-header" class="bc-logo-container">
+            <a id="bc-logo-container-header" class="bc-logo-container" href="">
                 <span id="bc-logo-berenika" class="bc-logo-part">
                     <?php get_template_part("static/icons/Logo", "Berenika.svg"); ?>
                 </span>
                 <span id="bc-logo-czarnota" class="bc-logo-part">
                     <?php get_template_part("static/icons/Logo", "Czarnota.svg"); ?>
-            </div>
+            </a>
             <nav id="desktop-nav" class="hidden-mobile">
                 <?php
                 wp_nav_menu(
@@ -57,7 +57,3 @@
             </div>
         </div>
     </header>
-
-    <div style="height: 200px">
-        <?php _e("English", "bc-theme"); ?>
-    </div>
