@@ -1,0 +1,16 @@
+@use "../utils/breakpoints"
+@use "../global/colors"
+@use "../utils/spacing" as * 
+@use "../utils/layout"
+@use "../global/fonts"
+@use "../global/mixins"
+
+.product
+    display: flex
+    margin: 0 spacing(26)
+
+.summary
+    margin-left: spacing(5)
+    @include layout.group(spacing(2), row)
+    grid-auto-rows: max-content
+    justify-items: flex-start

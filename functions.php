@@ -24,7 +24,7 @@ add_action('init', 'bc_theme_mods');
  */
 function EnqueueMyStyles()
 {
-  wp_enqueue_script('custom-js', get_template_directory_uri() . '/scripts/customJs.js', array(), '1.0.0', true);
+  wp_enqueue_script('custom-js', get_template_directory_uri() . '/scripts/index.js', array(), '1.0.0', true);
   wp_enqueue_style('my-main-style', get_stylesheet_uri(), false, '20150320');
 }
 add_action('wp_enqueue_scripts', 'EnqueueMyStyles');

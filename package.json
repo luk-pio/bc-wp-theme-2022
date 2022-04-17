@@ -1,0 +1,36 @@
+{
+  "name": "bc-theme",
+  "version": "1.0.0",
+  "description": "",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "targets": {
+    "styles": {
+      "context": "browser",
+      "source": "styles/style.sass",
+      "distDir": "."
+    },
+    "js": {
+      "context": "browser",
+      "source": "dev/scripts/index.js",
+      "distDir": "./scripts"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "parcel watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luk-pio/bc-wp-theme-2022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luk-pio/bc-wp-theme-2022/issues"
+  },
+  "homepage": "https://github.com/luk-pio/bc-wp-theme-2022#readme",
+  "devDependencies": {
+    "parcel": "^2.4.1",
+    "sass": "^1.50.0"
+  }
+}
