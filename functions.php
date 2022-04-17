@@ -1,4 +1,17 @@
 <?php
+// $roots_includes = array(
+//   '/functions/body-class.php',
+//   '/functions/connections.php'
+// );
+
+// foreach ($roots_includes as $file) {
+//   if (!$filepath = locate_template($file)) {
+//     trigger_error("Error locating `$file` for inclusion!", E_USER_ERROR);
+//   }
+
+//   require_once $filepath;
+// }
+// unset($file, $filepath);
 
 /**
  * Setup Theme
@@ -158,3 +171,35 @@ function change_existing_currency_symbol($currency_symbol, $currency)
   }
   return $currency_symbol;
 }
+
+function bc_product_categories($args = array())
+{
+  $parentid = get_queried_object_id();
+  $uncategorized_id = 15;
+
+  $terms = get_terms(array('taxonomy' => 'product_cat', 'exclude' => array($parentid => $parentid, $uncategorized_id => $uncategorized_id)));
+
+  if ($terms) {
+    echo '<ul class="product-cats">';
+
+    foreach ($terms as $term) {
+      echo '<li class="category">';
+      woocommerce_subcategory_thumbnail($term);
+      echo '<h2>';
+      echo '<a href="' .  esc_url(get_term_link($term)) . '" class="' . $term->slug . '">';
+      echo $term->name;
+      echo '</a>';
+      echo '</h2>';
+      echo '</li>';
+    }
+
+    echo '</ul>';
+  }
+}
+
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+add_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 15);

@@ -59,6 +59,7 @@ get_header('shop');
 		 * @hooked woocommerce_result_count - 20
 		 * @hooked woocommerce_catalog_ordering - 30
 		 */
+		bc_product_categories();
 		woocommerce_output_all_notices();
 		woocommerce_result_count();
 		// woocommerce_catalog_ordering();
