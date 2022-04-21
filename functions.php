@@ -75,7 +75,8 @@ function register_my_menus()
     array(
       'header-menu' => "Desktop Header Menu",
       'mobile-menu' => "Mobile menu",
-      'footer-menu' => "Footer menu"
+      'footer-menu' => "Footer menu",
+      'categories-menu' => "Categories Menu"
     )
   );
 }
@@ -91,7 +92,7 @@ function bc_get_attachment_url_by_slug($slug)
   );
   $_header = get_posts($args);
   $header = $_header ? array_pop($_header) : null;
-  return $header ? ($header->ID) : '';
+  return $header ? ($header->guid) : '';
 }
 
 function bc_get_current_language()
@@ -138,6 +139,58 @@ function bc_get_lang_switcher()
         ?>
 
 <?php
+// Get the nav menu based on $menu_name (same as 'theme_location' or 'menu' arg to wp_nav_menu)
+// This code based on wp_nav_menu's code to get Menu ID from menu slug
+
+function bc_category_menu()
+{
+
+  $menu_name = 'categories-menu';
+
+  if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
+    $menu = wp_get_nav_menu_object($locations[$menu_name]);
+
+    $menu_items = wp_get_nav_menu_items($menu->term_id);
+
+    $menu_list = '<ul id="menu-' . $menu_name . '">';
+
+    foreach ((array) $menu_items as $key => $menu_item) {
+      $title = $menu_item->title;
+      $url = $menu_item->url;
+      $menu_list .= '<li><img class="category-menu-item-icon" src="' . bc_get_attachment_url_by_slug(strtolower($title)) . '" /><a href="' . $url . '">' . $title . '</a></li>';
+    }
+    $menu_list .= '</ul>';
+  } else {
+    $menu_list = '<ul><li>Menu "' . $menu_name . '" not defined.</li></ul>';
+  }
+  return $menu_list;
+}
+
+function bc_mobile_menu()
+{
+?>
+<div class="mobile-menu-container">
+    <div id="nav-burger" class="icon">
+        <?php get_template_part("static/icons/Icon", "Menu.svg"); ?>
+    </div>
+    <div class="mobile-menu-sidebar">
+        <div id="mobile-menu" class="mobile-menu">
+            <div class="mobile-menu-content">
+                <?php
+          echo bc_category_menu();
+          ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<?php
+}
+?>
+
+
+<?php
 function mytheme_add_woocommerce_support()
 {
   add_theme_support('woocommerce', array(
@@ -172,6 +225,10 @@ function change_existing_currency_symbol($currency_symbol, $currency)
   return $currency_symbol;
 }
 
+function bc_get_categories($args = array())
+{
+}
+
 function bc_product_categories($args = array())
 {
   $parentid = get_queried_object_id();
@@ -197,9 +254,13 @@ function bc_product_categories($args = array())
   }
 }
 
+add_action('woocommerce_before_single_product', 'woocommerce_template_single_title', 15);
+
 remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
 add_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 15);
+
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);

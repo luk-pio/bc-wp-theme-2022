@@ -31,13 +31,6 @@
     height: 1px
     background-color: colors.$black
 
-#mobile-menu-container
-    @include breakpoints.mobile
-        width: fit-content
-        @include layout.group(spacing(2))
-    @include breakpoints.tablet-or-desktop
-        display: none
-
 #menu-desktop-menu
     @include breakpoints.mobile
         display: none

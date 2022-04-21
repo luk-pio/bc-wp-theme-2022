@@ -21,12 +21,7 @@
 <body id="bc-body">
     <header id="bc-header" class="bounded">
         <div class="bc-header-container">
-            <div id="mobile-menu-container">
-                <div id="nav-burger" class="icon">
-                    <?php get_template_part("static/icons/Icon", "Menu.svg"); ?>
-                </div>
-                <?php echo bc_get_lang_switcher() ?>
-            </div>
+            <?php echo bc_mobile_menu() ?>
             <a id="bc-logo-container-header" class="bc-logo-container" href="">
                 <span id="bc-logo-berenika" class="bc-logo-part">
                     <?php get_template_part("static/icons/Logo", "Berenika.svg"); ?>

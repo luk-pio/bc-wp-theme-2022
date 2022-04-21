@@ -290,23 +290,6 @@ button {
 }
 
 @media (max-width: 845px) {
-  #mobile-menu-container {
-    width: fit-content;
-    grid-gap: 16px;
-    grid-auto-flow: column;
-    align-items: center;
-    justify-items: center;
-    display: inline-grid;
-  }
-}
-
-@media (min-width: 846px) {
-  #mobile-menu-container {
-    display: none;
-  }
-}
-
-@media (max-width: 845px) {
   #menu-desktop-menu {
     display: none;
   }
@@ -545,6 +528,46 @@ button {
   background-color: #fff;
   padding: 8px 4px 4px;
   position: absolute;
+}
+
+@media (max-width: 845px) {
+  .mobile-menu-container {
+    width: fit-content;
+    grid-gap: 16px;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-items: center;
+    display: inline-grid;
+  }
+}
+
+@media (min-width: 846px) {
+  .mobile-menu-container {
+    display: none;
+  }
+}
+
+.mobile-menu-sidebar {
+  width: 100vw;
+  height: calc(100vh - 68px);
+  background-color: #fff;
+  position: absolute;
+  top: 68px;
+  left: 0;
+  overflow-y: scroll;
+}
+
+#menu-categories-menu {
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 48px;
+  margin-left: 48px;
+  display: flex;
+}
+
+.category-menu-item-icon {
+  height: 24px;
+  widht: 24px;
 }
 
 form p {
