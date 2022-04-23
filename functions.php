@@ -114,7 +114,7 @@ function bc_get_lang_switcher()
     <div class="current-language">
         <?php echo $current_language['short_language_name'];
       ?>
-        <div :class="open && 'rot-180'">
+        <div class="chevron-icon" :class="open && 'rot-180'">
             <?php get_template_part("static/icons/Chevron", "Down.svg"); ?>
         </div>
     </div>
@@ -221,10 +221,41 @@ function bc_mobile_menu()
 
 <?php
 }
-?>
 
+function bc_get_desktop_nav()
+{
+  $menu_name = 'header-menu';
 
+  if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
+    $menu = wp_get_nav_menu_object($locations[$menu_name]);
+
+    $menu_items = wp_get_nav_menu_items($menu->term_id);
+
+    echo '<ul id="menu-desktop-menu">';
+
+    foreach ((array) $menu_items as $key => $menu_item) {
+      $title = $menu_item->title;
+      $url = $menu_item->url;
+      if ($title == "Shop") {
+  ?>
+<li class="desktop-shop-dropdown" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+    <?php echo $title ?>
+    <div class="desktop-category-menu" x-show="open" x-transition.opacity>
+        <div class="desktop-category-filler"></div>
+        <?php echo bc_category_menu() ?>
+    </div>
+    <div class='chevron-icon' :class="open && 'rot-180'">
+        <?php get_template_part("static/icons/Chevron", "Down.svg") ?>
+    </div>
+</li>
 <?php
+      } else echo '<a href="' . $url . '"><li>' . $title . '</li></a>';
+    }
+  } else {
+    echo '<ul></ul>';
+  }
+}
+
 function mytheme_add_woocommerce_support()
 {
   add_theme_support('woocommerce', array(
@@ -232,13 +263,13 @@ function mytheme_add_woocommerce_support()
     'gallery_thumbnail_image_width' => 300,
     'single_image_width' => 500,
 
-    'product_grid'          => array(
-      'default_rows'    => 3,
-      'min_rows'        => 2,
-      'max_rows'        => 4,
+    'product_grid' => array(
+      'default_rows' => 3,
+      'min_rows' => 2,
+      'max_rows' => 4,
       'default_columns' => 3,
-      'min_columns'     => 2,
-      'max_columns'     => 4,
+      'min_columns' => 2,
+      'max_columns' => 4,
     ),
   ));
 }
@@ -268,7 +299,8 @@ function bc_product_categories($args = array())
   $parentid = get_queried_object_id();
   $uncategorized_id = 15;
 
-  $terms = get_terms(array('taxonomy' => 'product_cat', 'exclude' => array($parentid => $parentid, $uncategorized_id => $uncategorized_id)));
+  $terms = get_terms(array('taxonomy' => 'product_cat', 'exclude' => array($parentid => $parentid, $uncategorized_id =>
+  $uncategorized_id)));
 
   if ($terms) {
     echo '<ul class="product-cats">';

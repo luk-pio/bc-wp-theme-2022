@@ -31,6 +31,36 @@
     height: 1px
     background-color: colors.$black
 
+#desktop-nav
+    position: relative
+
+    .desktop-shop-dropdown
+        display: flex
+        gap: spacing(1)
+        align-items: center
+
+    .desktop-category-menu
+        -webkit-clip-path: inset(0 -1000px -1000px -100px)
+        background: #fff
+        position: absolute
+        top: 14px
+        left: -22px
+
+        .desktop-category-filler
+            height: 24px
+
+        #menu-categories-menu
+            font-size: 16px
+            -webkit-clip-path: inset(0 -1000px -1000px -100px)
+            clip-path: inset(0 -1000px -1000px -100px)
+            background: #fff
+            padding: 0 16px 16px
+            top: 14px
+            left: -22px
+            box-shadow: 0 0 5px #42445a
+            .category-menu-item-icon
+                height: 36px
+                width: 36px
 #menu-desktop-menu
     @include breakpoints.mobile
         display: none

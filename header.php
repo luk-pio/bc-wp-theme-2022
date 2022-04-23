@@ -30,15 +30,7 @@
                     <?php get_template_part("static/icons/Logo", "Czarnota.svg"); ?>
             </a>
             <nav id="desktop-nav" class="hidden-mobile">
-                <?php
-                wp_nav_menu(
-                    array(
-                        'menu' => 'header-menu',
-                        'container' => '',
-                        'theme_location' => 'header-menu',
-                    )
-                )
-                ?>
+                <?php echo bc_get_desktop_nav(); ?>
             </nav>
             <div id="header-container-right">
                 <div id="desktop-lang-switcher" class="hidden-mobile">

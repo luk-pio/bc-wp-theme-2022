@@ -233,10 +233,6 @@ button {
   background: unset;
 }
 
-.rot-180 {
-  transform: rotate(180deg);
-}
-
 .bc-header-container {
   grid-template-columns: fit-content(0) auto auto;
   align-items: center;
@@ -287,6 +283,44 @@ button {
 .bc-divider {
   height: 1px;
   background-color: #000;
+}
+
+#desktop-nav {
+  position: relative;
+}
+
+#desktop-nav .desktop-shop-dropdown {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+#desktop-nav .desktop-category-menu {
+  -webkit-clip-path: inset(0 -1000px -1000px -100px);
+  background: #fff;
+  position: absolute;
+  top: 14px;
+  left: -22px;
+}
+
+#desktop-nav .desktop-category-menu .desktop-category-filler {
+  height: 24px;
+}
+
+#desktop-nav .desktop-category-menu #menu-categories-menu {
+  -webkit-clip-path: inset(0 -1000px -1000px -100px);
+  clip-path: inset(0 -1000px -1000px -100px);
+  background: #fff;
+  padding: 0 16px 16px;
+  font-size: 16px;
+  top: 14px;
+  left: -22px;
+  box-shadow: 0 0 5px #42445a;
+}
+
+#desktop-nav .desktop-category-menu #menu-categories-menu .category-menu-item-icon {
+  height: 36px;
+  width: 36px;
 }
 
 @media (max-width: 845px) {
@@ -502,6 +536,15 @@ button {
 
 #wiseculture-url {
   text-decoration: underline;
+}
+
+.chevron-icon {
+  -o-transition: .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+.rot-180 {
+  transform: rotate(-180deg);
 }
 
 #desktop-lang-switcher {
