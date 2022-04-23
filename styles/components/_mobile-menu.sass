@@ -26,6 +26,10 @@
     transition: .25s ease-in-out
 
     &.menu-open
+        -webkit-clip-path: inset(0 -1000px -1000px -100px)
+        -ms-overflow-style: none
+        scrollbar-width: none
+        clip-path: inset(0 -1000px -1000px -100px)
         box-shadow: -3px 5px 9px 0px #42445a
         left: 0px
 

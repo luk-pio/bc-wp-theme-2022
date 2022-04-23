@@ -604,6 +604,10 @@ button {
 }
 
 .mobile-menu-sidebar.menu-open {
+  -webkit-clip-path: inset(0 -1000px -1000px -100px);
+  clip-path: inset(0 -1000px -1000px -100px);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   left: 0;
   box-shadow: -3px 5px 9px #42445a;
 }
