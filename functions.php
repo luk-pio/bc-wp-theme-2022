@@ -142,9 +142,23 @@ function bc_get_lang_switcher()
 // Get the nav menu based on $menu_name (same as 'theme_location' or 'menu' arg to wp_nav_menu)
 // This code based on wp_nav_menu's code to get Menu ID from menu slug
 
+function bc_get_current_collection()
+{
+  $the_slug = 'collection';
+  $args = array(
+    'name'        => $the_slug,
+    'post_type'   => 'page',
+    'post_status' => 'publish',
+    'numberposts' => 1
+  );
+  $my_posts = get_posts($args);
+  if ($my_posts) :
+    return $my_posts[0];
+  endif;
+}
+
 function bc_category_menu()
 {
-
   $menu_name = 'categories-menu';
 
   if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
@@ -157,7 +171,7 @@ function bc_category_menu()
     foreach ((array) $menu_items as $key => $menu_item) {
       $title = $menu_item->title;
       $url = $menu_item->url;
-      $menu_list .= '<li><img class="category-menu-item-icon" src="' . bc_get_attachment_url_by_slug(strtolower($title)) . '" /><a href="' . $url . '">' . $title . '</a></li>';
+      $menu_list .= '<a href="' . $url . '"><li><img class="category-menu-item-icon" src="' . bc_get_attachment_url_by_slug(strtolower($title)) . '" />' . $title . '</li></a>';
     }
     $menu_list .= '</ul>';
   } else {
@@ -169,16 +183,36 @@ function bc_category_menu()
 function bc_mobile_menu()
 {
 ?>
-<div class="mobile-menu-container">
-    <div id="nav-burger" class="icon">
-        <?php get_template_part("static/icons/Icon", "Menu.svg"); ?>
+<div class="mobile-menu-container" x-data="{showMenu: false}" @click.away="showMenu = false">
+    <div @click.prevent="showMenu = !showMenu" id="nav-burger" class="icon">
+        <div id="nav-icon4" :class="showMenu && 'open'">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
-    <div class="mobile-menu-sidebar">
-        <div id="mobile-menu" class="mobile-menu">
-            <div class="mobile-menu-content">
-                <?php
-          echo bc_category_menu();
-          ?>
+    <div class="mobile-menu-sidebar" :class="showMenu && 'menu-open'">
+        <div class="mobile-menu-content">
+            <?php $current_collection = bc_get_current_collection();
+        if ($current_collection) {
+          $collection_title = $current_collection->current_collection;
+          $collection_url = get_permalink($current_collection->ID);
+          echo '<div class="mobile-menu-heading"><a href="' . $collection_url . '"><h1>' . $collection_title . '</h1></a>';
+          echo '<div id="mobile-menu-divider" class="bc-divider"></div></div>';
+        }
+        ?>
+
+            <?php
+        echo bc_category_menu();
+        ?>
+
+            <div id="mobile-menu-social">
+                <a class="social-icon" href="https://www.instagram.com/berenika_cz/">
+                    <?php get_template_part("static/icons/Icon", "IG.svg"); ?>
+                </a>
+                <a class="social-icon" href="https://pl-pl.facebook.com/BerenikaCzarnota/">
+                    <?php get_template_part("static/icons/Icon", "FB.svg"); ?>
+                </a>
             </div>
         </div>
     </div>
