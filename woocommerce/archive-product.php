@@ -23,7 +23,7 @@ get_header('shop');
 
 <main id="product-category-main" class="bc-main bounded">
 
-    <?php
+	<?php
 	/**
 	 * Hook: woocommerce_before_main_content.
 	 *
@@ -34,12 +34,12 @@ get_header('shop');
 	woocommerce_breadcrumb();
 
 	?>
-    <header class="woocommerce-products-header">
-        <?php if (apply_filters('woocommerce_show_page_title', true)) : ?>
-        <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-        <?php endif; ?>
+	<header class="woocommerce-products-header">
+		<?php if (apply_filters('woocommerce_show_page_title', true)) : ?>
+			<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+		<?php endif; ?>
 
-        <?php
+		<?php
 		/**
 		 * Hook: woocommerce_archive_description.
 		 *
@@ -48,8 +48,8 @@ get_header('shop');
 		 */
 		do_action('woocommerce_archive_description');
 		?>
-    </header>
-    <?php
+	</header>
+	<?php
 	if (woocommerce_product_loop()) {
 
 		/**

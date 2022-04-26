@@ -233,6 +233,10 @@ button {
   background: unset;
 }
 
+:root {
+  --accent-color: #fcddec;
+}
+
 .bc-header-container {
   grid-template-columns: fit-content(0) auto auto;
   align-items: center;
@@ -619,7 +623,6 @@ button {
 #menu-categories-menu {
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 24px;
   font-size: 20px;
   display: flex;
 }
@@ -1050,6 +1053,55 @@ p {
   justify-items: flex-start;
   margin-left: 40px;
   display: inline-grid;
+}
+
+.wp-container-1, .wp-container-1 video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.homepage-hero-container {
+  width: 100%;
+  text-align: center;
+  color: var(--accent-color);
+  z-index: 100;
+  letter-spacing: .08em;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .25));
+  text-transform: uppercase;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  font-size: 17vw;
+  display: flex;
+  position: absolute;
+  top: 36vh;
+}
+
+.homepage-hero-container h1 {
+  margin-left: 10px;
+}
+
+.homepage-hero-container a {
+  display: contents;
+}
+
+.homepage-hero-container button {
+  background: #fcddec;
+  border-radius: 4px;
+  padding: 12px 48px;
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 36px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+}
+
+.homepage-content {
+  margin-top: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -157,6 +157,21 @@ function bc_get_current_collection()
   endif;
 }
 
+function bc_get_hompage()
+{
+  $the_slug = 'homepage';
+  $args = array(
+    'name'        => $the_slug,
+    'post_type'   => 'page',
+    'post_status' => 'publish',
+    'numberposts' => 1
+  );
+  $my_posts = get_posts($args);
+  if ($my_posts) :
+    return $my_posts[0];
+  endif;
+}
+
 function bc_category_menu()
 {
   $menu_name = 'categories-menu';

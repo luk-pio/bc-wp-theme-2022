@@ -22,7 +22,7 @@
     <header id="bc-header" class="bounded">
         <div class="bc-header-container">
             <?php echo bc_mobile_menu() ?>
-            <a id="bc-logo-container-header" class="bc-logo-container" href="">
+            <a id="bc-logo-container-header" class="bc-logo-container" href="<?php echo get_site_url() ?>">
                 <span id="bc-logo-berenika" class="bc-logo-part">
                     <?php get_template_part("static/icons/Logo", "Berenika.svg"); ?>
                 </span>
