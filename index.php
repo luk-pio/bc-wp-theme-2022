@@ -6,14 +6,14 @@ if ($current_collection) {
     $collection_title = $current_collection->current_collection;
     $collection_url = get_permalink($current_collection->ID);
 ?>
-    <div class="homepage-hero-container">
-        <h1 class="homepage-current-collection"> <?php echo $collection_title ?> </h1>
-        <a href="<?php echo $collection_url ?>">
-            <button>
-                <?php _e("SEE MORE", "bc-theme"); ?>
-            </button>
-        </a>
-    </div>
+<div class="homepage-hero-container">
+    <h1 class="homepage-current-collection"> <?php echo $collection_title ?> </h1>
+    <a href="<?php echo $collection_url ?>">
+        <button>
+            <?php _e("SEE MORE", "bc-theme"); ?>
+        </button>
+    </a>
+</div>
 <?php
 }
 
@@ -61,7 +61,6 @@ endif;
     wc_set_loop_prop('total_pages', $products_ids->max_num_pages);
 
     if ($products_ids) {
-        do_action('woocommerce_before_shop_loop');
         woocommerce_product_loop_start();
         foreach ($products_ids->products as $featured_product) {
             $post_object = get_post($featured_product);
@@ -74,8 +73,41 @@ endif;
     } else {
         do_action('woocommerce_no_products_found');
     }
+
     ?>
 
+    <div class="bc-divider-container">
+        <div class="bc-divider"></div>
+    </div>
+
+    <?php
+    bc_product_categories();
+    ?>
+
+    <div class="bc-divider-container">
+        <div class="bc-divider"></div>
+    </div>
+
+    <div class="materials-container">
+        <div class="materials-inner-container">
+            <h2 class="materials-heading">Materials</h2>
+            <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque faucibus viverra
+                orci
+                nibh nulla purus
+                tempus. Ornare egestas porta quis integer neque, auctor viverra a porttitor. Amet ultrices at erat quam.
+                Etiam
+                pellentesque orci, vestibulum, ac a lectus neque. Nunc sapien sed in at sed proin cras. Dolor ipsum
+                nisi,
+                diam
+                habitant aliquet massa.</p>
+            <h3>ALL OUR PRODUCTS <br /> ARE <b>HAND MADE!</b></h3>
+            <figure class="homepage-materials-animation wp-block-image size-full"><img
+                    src="http://localhost:10004/wp-content/uploads/2022/04/stopka_gif.gif" alt=""
+                    class="wp-image-167" />
+            </figure>
+
+        </div>
+    </div>
 </div>
 
 <?php

@@ -5,12 +5,11 @@
 @use "../global/fonts"
 @use "../global/mixins"
 
-$black: black
 .woocommerce-products-header__title
     font-size: 1.5rem
     font-weight: 400
     line-height: 1.5
-    color: $black
+    color: colors.$black
     text-transform: uppercase
     margin-bottom: spacing(2)
     @include breakpoints.mobile
@@ -20,16 +19,6 @@ $black: black
         font-size: 1.5rem
         line-height: 1.5
 
-.woocommerce-breadcrumb
-    font-size: 0.8rem
-    margin-bottom: spacing(3)
-    color: colors.$font-secondary
-    text-transform: uppercase
-
-    a
-        text-decoration: underline
-        color: colors.$font-secondary
-
 .result-count-container
     display: flex
     flex-direction: column
@@ -37,64 +26,10 @@ $black: black
     margin-bottom: spacing(5)
 
 .result-count-divider
-    border-top: 1px solid black
+    border-top: 1px solid colors.$black
     width: spacing(12)
     height: 2px
     margin-bottom: spacing(1)
 
 .bc-main .woocommerce-result-count
     text-align: end
-
-.products
-    display: grid
-    grid-column-gap: spacing(6)
-    grid-row-gap: spacing(8)
-    grid-auto-flow: row
-    grid-template-columns: repeat(2, minmax(1px, 1fr))
-    color: $black
-    @include breakpoints.tablet-or-desktop
-        grid-template-columns: repeat(3, minmax(1px, 1fr))
-
-    font-size: fonts.$font-small
-
-.product
-    text-transform: uppercase
-
-.woocommerce-loop-product__title
-    margin: spacing(1) 0
-    padding: spacing(0.8) 0
-    font-weight: 500
-    font-size: 0.7rem
-    border-radius: 4px
-    // border-bottom: 2.5px solid colors.$bc-neon-yellow
-    color: $black
-
-.woocommerce-loop-product__link
-    display: flex
-    flex-direction: column
-    font-weight: 600
-    font-size: 0.6rem
-    justify-content: center
-    align-items: flex-start
-    // img
-    //     height: auto
-    //     width: 200px
-
-.price
-    align-self: flex-end
-    font-weight: 300
-
-.product-description
-    max-width: 80%
-    padding-left: spacing(1)
-    letter-spacing: 0.6px
-
-.attachment-woocommerce_thumbnail
-    width: 90%
-    height: auto
-    margin-bottom: spacing(2)
-    transition: transform .4s, box-shadow .4s, border .4s
-    padding: spacing(0.5)
-    @include mixins.product-border
-    &:hover
-        transform: scale(1.05)

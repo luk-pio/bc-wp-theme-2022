@@ -274,9 +274,9 @@ function bc_get_desktop_nav()
 function mytheme_add_woocommerce_support()
 {
   add_theme_support('woocommerce', array(
-    'thumbnail_image_width' => 200,
-    'gallery_thumbnail_image_width' => 300,
-    'single_image_width' => 500,
+    'thumbnail_image_width' => 800,
+    'gallery_thumbnail_image_width' => 800,
+    'single_image_width' => 1200,
 
     'product_grid' => array(
       'default_rows' => 3,
@@ -318,22 +318,20 @@ function bc_product_categories($args = array())
   $uncategorized_id)));
 
   if ($terms) {
-    echo '<ul class="product-cats">';
-
-    foreach ($terms as $term) {
-      echo '<li class="category">';
-      woocommerce_subcategory_thumbnail($term);
-      echo '<h2>';
-      echo '<a href="' .  esc_url(get_term_link($term)) . '" class="' . $term->slug . '">';
-      echo $term->name;
-      echo '</a>';
-      echo '</h2>';
-      echo '</li>';
-    }
-
-    echo '</ul>';
+    ?>
+<ul class="product-categories-container">
+    <?php foreach ($terms as $term) { ?>
+    <a href=" <?php echo esc_url(get_term_link($term)) ?>" class=" <?php echo $term->slug ?> ">
+        <li class="category"> <?php woocommerce_subcategory_thumbnail($term); ?>
+            <h2 class="category-title"> <?php echo $term->name ?> </h2>
+        </li>
+    </a>
+    <?php } ?>
+</ul>
+<?php
   }
 }
+remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 
 add_action('woocommerce_before_single_product', 'woocommerce_template_single_title', 15);
 

@@ -59,7 +59,6 @@ get_header('shop');
 		 * @hooked woocommerce_result_count - 20
 		 * @hooked woocommerce_catalog_ordering - 30
 		 */
-		bc_product_categories();
 		woocommerce_output_all_notices();
 		woocommerce_result_count();
 		// woocommerce_catalog_ordering();
@@ -96,6 +95,7 @@ get_header('shop');
 		do_action('woocommerce_no_products_found');
 	}
 
+	bc_product_categories();
 	/**
 	 * Hook: woocommerce_after_main_content.
 	 *

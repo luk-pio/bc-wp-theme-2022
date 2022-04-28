@@ -22,7 +22,7 @@
 
 .homepage-hero-container
     width: 100%
-    font-size: 17vw
+    font-size: 10vw
     top: 36vh
     position: absolute
     text-align: center
@@ -49,9 +49,48 @@
         border-radius: 4px
         font-weight: 400
         font-size: 20px
-        padding: 12px 48px
+        padding: 6px 48px
         line-height: 36px
         font-family: fonts.$font-family
+        &:hover
+            background: rgba(255, 255, 255, 0.1)
+            border: 2px solid #FCDDEC
+            color: #FCDDEC
 
 .homepage-content
     margin-top: 100vh
+    width: 100%
+
+    .bc-divider-container
+        margin: 0 spacing(8)
+    .bc-divider
+        max-width: 800px
+        margin: 120px auto
+
+.materials-container
+    margin: 0 spacing(4)
+.materials-inner-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 80px
+    max-width: 1000px
+    margin: 0 auto
+    text-align: center
+
+    h2
+        font-size: 32px
+        font-weight: 300
+    h3
+        font-size: 24px
+        b
+            font-weight: 600
+    p
+        font-size: 16px
+        max-width: 80ch
+        text-align: justify
+    figure
+        max-width: 920px
+        img
+            padding-right: 10vw
+            box-sizing: border-box
