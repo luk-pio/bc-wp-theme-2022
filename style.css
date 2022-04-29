@@ -447,6 +447,7 @@ button {
 }
 
 #footer-image {
+  visibility: hidden;
   width: 100%;
   margin-right: 24px;
 }

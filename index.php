@@ -29,7 +29,17 @@ else :
     exit();
 endif;
 ?>
+
+
 <div class="homepage-content">
+    <?php
+    bc_product_categories();
+    ?>
+
+
+    <div class="bc-divider-container">
+        <div class="bc-divider"></div>
+    </div>
 
     <?php
     if (!function_exists('wc_get_products')) {
@@ -74,14 +84,6 @@ endif;
         do_action('woocommerce_no_products_found');
     }
 
-    ?>
-
-    <div class="bc-divider-container">
-        <div class="bc-divider"></div>
-    </div>
-
-    <?php
-    bc_product_categories();
     ?>
 
     <div class="bc-divider-container">
