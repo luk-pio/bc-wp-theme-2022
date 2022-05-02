@@ -21,8 +21,14 @@ function setup()
   add_theme_support("post-thumbnails");
   // Add dynamic title tag support
   add_theme_support("title-tag");
+  add_image_sizes();
 }
 add_action("after_setup_theme", "setup");
+
+function add_image_sizes()
+{
+  add_image_size('product-image', 800, 1000, array('center', 'center'));
+}
 
 function bc_theme_mods()
 {
@@ -276,7 +282,7 @@ function mytheme_add_woocommerce_support()
   add_theme_support('woocommerce', array(
     'thumbnail_image_width' => 800,
     'gallery_thumbnail_image_width' => 800,
-    'single_image_width' => 1200,
+    'single_image_width' => 800,
 
     'product_grid' => array(
       'default_rows' => 3,
@@ -289,6 +295,29 @@ function mytheme_add_woocommerce_support()
   ));
 }
 add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
+
+add_filter('woocommerce_get_image_size_gallery_thumbnail', function ($size) {
+  return array(
+    'width' => 800,
+    'height' => 1000,
+    'crop' => 1,
+  );
+});
+add_filter('woocommerce_get_image_size_thumbnail', function ($size) {
+  return array(
+    'width' => 800,
+    'height' => 1000,
+    'crop' => 1,
+  );
+});
+add_filter('woocommerce_get_image_size_single', function ($size) {
+  return array(
+    'width' => 800,
+    'height' => 1000,
+    'crop' => 1,
+  );
+});
+
 
 /**
  * Change a currency symbol
@@ -331,6 +360,24 @@ function bc_product_categories($args = array())
 <?php
   }
 }
+
+
+add_action('woocommerce_before_shop_loop_item_title', 'add_on_hover_shop_loop_image');
+
+function add_on_hover_shop_loop_image()
+{
+
+  $image_id = wc_get_product()->get_gallery_image_ids()[1];
+
+  if ($image_id) {
+
+    echo wp_get_attachment_image($image_id, 'product-image');
+  } else {  //assuming not all products have galleries set
+
+    echo wp_get_attachment_image(wc_get_product()->get_image_id(),  'product-image');
+  }
+}
+
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 
 add_action('woocommerce_before_single_product', 'woocommerce_template_single_title', 15);

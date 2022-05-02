@@ -8,6 +8,9 @@
     display: grid
     grid-template-columns: fit-content(0px) auto auto
     align-items: center
+    margin: spacing(2) auto
+    max-width: 1440px
+    padding: 0 spacing(6)
     @include breakpoints.mobile
         margin: spacing(2) spacing(3)
         grid-template-columns: repeat(3, 1fr)
@@ -81,6 +84,7 @@
 #bc-header
     background-color: white
     z-index: 9999
+    align-self: stretch
 
 .sticky
     position: fixed

@@ -1,12 +1,5 @@
 $breakpoints: ("mobile": 530px, "tablet": 846px, "desktop": 1440px)
 
-// @each $name, $size in $breakpoints
-//   @each $index, $_ in (1, 2, 3, 4, 5, 6)
-//     .#{$name}-flex
-//       & .pos-#{$index}
-//         @media (max-width: $size)
-//           @include order($index)
-
 @mixin mobile
   @media (max-width: #{map-get($breakpoints, "tablet") - 1px})
     @content

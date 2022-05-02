@@ -19,7 +19,7 @@
 </head>
 
 <body id="bc-body">
-    <header id="bc-header" class="bounded">
+    <header id="bc-header">
         <div class="bc-header-container">
             <?php echo bc_mobile_menu() ?>
             <a id="bc-logo-container-header" class="bc-logo-container" href="<?php echo get_site_url() ?>">

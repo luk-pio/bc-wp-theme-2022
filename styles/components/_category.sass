@@ -9,18 +9,29 @@
     display: grid
     grid-row-gap: spacing(8)
     grid-auto-flow: row
-    grid-template-columns: repeat(2, minmax(1px, 1fr))
     color: colors.$black
-    justify-items: center
-    margin-bottom: spacing(20)
-    @include breakpoints.tablet-or-desktop
-        grid-template-columns: repeat(3, minmax(1px, 1fr))
+    max-width: $max-content-width
+    margin: 0 auto spacing(20)
+    padding: 0 spacing(4)
+
+    --cat-image-size: 320px
+    grid-template-columns: repeat(3, 1fr)
+    @media (max-width: 700px)
+        grid-template-columns: repeat(2, 1fr)
+        margin-right: auto
+        margin-left: auto
+
+    li
+        display: flex
+        flex-direction: column
+        align-items: center
+
     img
-        transition: all .1s ease-in-out
+        height: unset
+        width: auto
+        transition: scale .1s ease-in-out
         position: relative
         z-index: 1
-        width: 100%
-        height: auto
         &:hover
             transform: scale(1.1)
 
@@ -35,7 +46,15 @@
         max-width: 240px
         position: relative
         z-index: 2
-        margin: 0 20px
+        margin: 0 auto
+        width: auto
+        align-self: stretch
+        bottom: 30px
+        min-width: 160px
+        @media (min-width: 1000px)
+            bottom: 50px
+            min-width: 240px
+            width: auto
 
         &:hover
             border: 1px solid #070707
