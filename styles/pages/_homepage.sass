@@ -3,14 +3,13 @@
 @use "../utils/breakpoints"
 @use "../global/fonts" 
 
-.wp-container-1
+.wp-block-video
     object-fit: cover
     width: 100vw
     height: 100vh
     position: absolute
     top: 0
     left: 0
-    position: absolute
 
     video
         object-fit: cover
@@ -22,20 +21,24 @@
 
 .homepage-hero-container
     width: 100%
-    font-size: 10vw
     top: 36vh
     position: absolute
     text-align: center
-    color: var(--accent-color)
+    color: var(--color-accent)
     z-index: 100
     letter-spacing: 0.08em
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    filter: drop-shadow(0px 4px 4px var(--color-shadow))
     text-transform: uppercase
     display: flex
-    top: 36vh
-    gap: 80px
+    gap: 40px
     flex-direction: column
     align-items: center
+
+    font-size: 168px
+    @media (max-width: 1080px)
+        font-size: 126px
+    @include breakpoints.mobile
+        font-size: 15vw
 
     h1
         margin-left: 10px
@@ -44,21 +47,29 @@
         display: contents
 
     button
-        background: #FCDDEC
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+        background: var(--color-accent)
+        box-shadow: 0px 4px 4px var(--color-shadow)
         border-radius: 4px
         font-weight: 400
-        font-size: 20px
-        padding: 6px 48px
+        padding: 8px 64px
         line-height: 36px
         font-family: fonts.$font-family
+
+        font-size: 20px
+        @media (max-width: 720px)
+            font-size: 18px
+            padding: 6px 48px
+        @media (max-width: 420px)
+            font-size: 16px
+            padding: 4px 32px
+
         &:hover
-            background: rgba(255, 255, 255, 0.1)
-            border: 2px solid #FCDDEC
-            color: #FCDDEC
+            background: var(--color-shadow)
+            border: 2px solid var(--color-accent)
+            color: var(--color-accent)
 
 .homepage-content
-    margin-top: spacing(10)
+    margin-top: calc(100vh + spacing(8))
     width: 100%
 
     .bc-divider-container

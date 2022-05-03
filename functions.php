@@ -352,7 +352,9 @@ function bc_product_categories($args = array())
     <?php foreach ($terms as $term) { ?>
     <a href=" <?php echo esc_url(get_term_link($term)) ?>" class=" <?php echo $term->slug ?> ">
         <li class="category"> <?php woocommerce_subcategory_thumbnail($term); ?>
-            <h2 class="category-title"> <?php echo $term->name ?> </h2>
+            <div class="category-title-container">
+                <h2 class="category-title"> <?php echo $term->name ?> </h2>
+            </div>
         </li>
     </a>
     <?php } ?>

@@ -6,11 +6,11 @@ if ($current_collection) {
     $collection_title = $current_collection->current_collection;
     $collection_url = get_permalink($current_collection->ID);
 ?>
-<div class="homepage-hero-container">
+<div id="homepage-hero" class="homepage-hero-container">
     <h1 class="homepage-current-collection"> <?php echo $collection_title ?> </h1>
     <a href="<?php echo $collection_url ?>">
         <button>
-            <?php _e("SEE MORE", "bc-theme"); ?>
+            <?php _e("NEW COLLECTION", "bc-theme"); ?>
         </button>
     </a>
 </div>
@@ -32,6 +32,10 @@ endif;
 
 
 <div class="homepage-content">
+    <div class="bc-divider-container">
+        <div class="bc-divider"></div>
+    </div>
+
     <?php
     bc_product_categories();
     ?>
