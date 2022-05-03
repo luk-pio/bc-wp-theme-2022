@@ -875,14 +875,11 @@ label:focus-within > span.bc-form-label, .input-selected {
   font-size: .6rem;
   font-weight: 600;
   display: flex;
-}
-
-.products .woocommerce-loop-product__link:hover img {
-  display: none;
+  position: relative;
 }
 
 .products .woocommerce-loop-product__link:hover img:nth-of-type(2) {
-  display: block;
+  opacity: 1;
 }
 
 .products .woocommerce-loop-product__link img {
@@ -891,10 +888,13 @@ label:focus-within > span.bc-form-label, .input-selected {
   object-fit: cover;
   margin: 0 auto;
   padding: 0;
+  transition: all .2s;
 }
 
 .products .woocommerce-loop-product__link img:nth-of-type(2) {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  top: 0;
 }
 
 .product-categories-container {

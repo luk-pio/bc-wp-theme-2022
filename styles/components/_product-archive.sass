@@ -39,6 +39,7 @@
         letter-spacing: 0.6px
     .woocommerce-loop-product__link
         display: flex
+        position: relative
         flex-direction: column
         font-weight: 600
         font-size: 0.6rem
@@ -47,11 +48,11 @@
 
         &:hover
             img
-                display: none
                 &:nth-of-type(2)
-                    display: block
+                    opacity: 1
 
         img
+            transition: all 0.2s ease
             width: 100%
             height: auto
             margin-bottom: spacing(2)
@@ -59,4 +60,6 @@
             padding: 0
             margin: 0 auto
             &:nth-of-type(2)
-                display: none
+                opacity: 0
+                position: absolute
+                top: 0
