@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<main id="contact-main" class="bc-main bounded">
+<main id="contact-main" class="bc-main ">
     <?php
     the_content();
     ?>

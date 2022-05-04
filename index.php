@@ -31,7 +31,7 @@ endif;
 ?>
 
 
-<div class="homepage-content">
+<div class="bc-main homepage-content">
     <div class="bc-divider-container">
         <div class="bc-divider"></div>
     </div>

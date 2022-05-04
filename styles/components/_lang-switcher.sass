@@ -16,7 +16,21 @@
 
 .language-dropdown-list
     position: absolute
-    background-color: white
-    padding: spacing(0.5)
-    padding-top: spacing(1)
+    background-color: var(--color-background)
+    top: 41px
+    padding: spacing(1) spacing(0.5)
     width: spacing(5)
+    box-shadow: 0 0 5px var(--color-shadow)
+    // padding: spacing(1) 0
+
+#bc-header
+    .language-dropdown-list
+        span
+            color: var(--color-text)
+
+#language-dropdown-hover-filler
+    position: absolute
+    top: 15px
+    height: 10px
+    padding: 10px
+    width: 100%

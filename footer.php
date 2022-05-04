@@ -1,6 +1,4 @@
-<?php wp_footer(); ?>
-
-<footer id="bc-footer" class="bounded">
+<footer id="bc-footer">
     <div id="footer-head">
         <div id="footer-bc-logo-container" class="bc-logo-container">
             <span id="bc-logo-berenika" class="bc-logo-part">
@@ -33,9 +31,7 @@
         </nav>
         <div id="footer-image-copy-container">
             <div id="footer-image-container">
-                <img id="footer-image"
-                    src="<?php echo get_template_directory_uri(); ?>/static/images/Animation-Footer.png"
-                    alt="Animation of three people knitting">
+                <img id="footer-image" src="<?php echo get_template_directory_uri(); ?>/static/images/Animation-Footer.png" alt="Animation of three people knitting">
             </div>
             <div id="footer-copy">
                 <div id="footer-designed-by"><?php _e("Store designed & develped by ", "bc-theme") ?>
@@ -49,5 +45,9 @@
 </footer>
 
 </body>
+
+
+<?php wp_footer(); ?>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 </html>

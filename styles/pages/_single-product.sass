@@ -15,3 +15,31 @@
         @include layout.group(spacing(2), row)
         grid-auto-rows: max-content
         justify-items: flex-start
+
+// .slick-slide
+//     img
+//         width: 100%
+//         height: auto
+//         object-fit: cover
+//         object-position: center
+//         transition: all 0.2s ease
+
+.woocommerce-product-gallery--with-images
+    width: 50%
+    padding-top: 20px
+    text-align: center
+
+.woocommerce-product-gallery__wrapper
+    width: 90%
+    margin: 0px auto
+
+.slick-slide
+    margin: 10px
+
+    & img
+        width: 100%
+        border: 2px solid #fff
+
+.wrapper .slick-dots li button:before
+    font-size: 20px
+    color: white

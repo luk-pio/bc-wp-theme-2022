@@ -2,19 +2,19 @@
 @use "../utils/spacing" as *
 @use "../utils/breakpoints"
 @use "../global/fonts"
+
 .bc-main
-    display: flex
-    flex-direction: column
-    margin-top: spacing(12)
     margin-bottom: spacing(10)
-    @include breakpoints.mobile
-        margin-top: spacing(4)
-        padding: 0 spacing(2)
-        max-width: 500px
-    @include breakpoints.tablet
-        max-width: 70vw
-    @include breakpoints.desktop
+    width: 100%
+    .bc-divider
         max-width: 800px
+        margin: 120px auto
+
+    .bc-divider-container
+        margin: 0 spacing(8)
+
+    .bc-page-meta
+        margin: 136px 48px 0 48px
 
 p
     font-size: fonts.$font-small

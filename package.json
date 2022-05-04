@@ -11,7 +11,9 @@
     },
     "js": {
       "context": "browser",
-      "source": "dev/scripts/index.js",
+      "source": [
+        "dev/scripts/index.js"
+      ],
       "distDir": "./scripts"
     }
   },

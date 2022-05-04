@@ -4,7 +4,6 @@
 @use "../utils/layout"
 
 .bc-header-container
-    margin: spacing(2) spacing(6)
     display: grid
     grid-template-columns: fit-content(0px) auto auto
     align-items: center
@@ -39,11 +38,19 @@
         gap: spacing(1)
         align-items: center
 
+    .desktop-category-hover-filler
+        height: 24px
+        position: absolute
+        top: 15px
+        height: 10px
+        padding: 10px
+        width: 75px
+
     .desktop-category-menu
         -webkit-clip-path: inset(0 -1000px -1000px -100px)
         background-color: var(--color-background)
         position: absolute
-        top: 14px
+        top: 38px
         left: -22px
 
         .desktop-category-filler
@@ -96,8 +103,6 @@
 
     &.sticky
         background-color: var(--color-background)
-        -webkit-box-shadow: 2px -7px 18px var(--color-shadow)
-        -moz-box-shadow: 2px -7px 18px var(--color-shadow)
         box-shadow: 2px -7px 18px var(--color-shadow)
 
         color: var(--color-text)
@@ -109,5 +114,15 @@
         #nav-icon4 span
             background: var(--color-text)
 
-.sticky-header-offset
-    // margin-top: 58px
+    &.visible
+        background-color: var(--color-background)
+        box-shadow: 2px -7px 18px var(--color-shadow)
+
+        color: var(--color-text)
+
+        svg
+            color: var(--color-text)
+        a
+            color: var(--color-text)
+        #nav-icon4 span
+            background: var(--color-text)

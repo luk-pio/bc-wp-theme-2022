@@ -48,3 +48,12 @@ function myFunction() {
     body.classList.remove("sticky-header-offset");
   }
 }
+
+jQuery(document).ready(function () {
+  jQuery(".woocommerce-product-gallery__wrapper").slick({
+    dots: true,
+    variableWidth: true,
+    slidesToShow: 1,
+    centerMode: true,
+  });
+});

@@ -13,13 +13,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap">
 
     <script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
     <?php wp_head(); ?>
 
 </head>
 
 <body id="bc-body">
-    <header id="bc-header">
+    <header id="bc-header" class="<?php if (!is_front_page()) echo 'visible' ?>">
         <div class="bc-header-container">
             <?php echo bc_mobile_menu() ?>
             <a id="bc-logo-container-header" class="bc-logo-container" href="<?php echo get_site_url() ?>">
