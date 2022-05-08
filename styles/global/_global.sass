@@ -1,5 +1,6 @@
 @use "../utils/breakpoints"
 @use "../global/fonts"
+@use "../utils/spacing" as * 
 
 body
     font-family: fonts.$font-family
@@ -25,12 +26,12 @@ button
     border-radius: 4px
     border: none
 .bc-button
-    background-color: unset
-    border-radius: 4px
-    border: none
-    background-color: black
-    color: #EBFF00
     text-transform: uppercase
+    border-radius: 4px
+    background-color: var(--color-accent)
+    color: var(--color-text)
+    box-shadow: 2px 2px 4px var(--color-shadow)
+    padding: spacing(1) spacing(1.5)
     &::selection
         background: unset
 

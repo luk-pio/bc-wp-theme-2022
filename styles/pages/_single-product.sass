@@ -5,41 +5,104 @@
 @use "../global/fonts"
 @use "../global/mixins"
 
-.single-product
-    .product
-        display: flex
-        margin: 0 spacing(26)
+.single-product-content
+    display: flex
+    justify-content: stretch
+    align-items: center
+    @include breakpoints.mobile
+        flex-direction: column
 
-    .summary
-        margin-left: spacing(5)
-        @include layout.group(spacing(2), row)
-        grid-auto-rows: max-content
-        justify-items: flex-start
-
-// .slick-slide
-//     img
-//         width: 100%
-//         height: auto
-//         object-fit: cover
-//         object-position: center
-//         transition: all 0.2s ease
-
-.woocommerce-product-gallery--with-images
+.swiper-carousel
+    position: relative
+    flex-direction: row
+    display: flex
+    max-width: 720px
     width: 50%
-    padding-top: 20px
-    text-align: center
+    @media (min-width: 1300px)
+        width: 45%
+    @media (max-width: 1100px)
+        width: 55%
 
-.woocommerce-product-gallery__wrapper
-    width: 90%
-    margin: 0px auto
-
-.slick-slide
-    margin: 10px
-
-    & img
+    @include breakpoints.mobile
         width: 100%
-        border: 2px solid #fff
 
-.wrapper .slick-dots li button:before
-    font-size: 20px
-    color: white
+.swiper-wrapper
+    width: 100%
+    heigth: auto
+
+.swiper-slide
+    img
+        width: 100%
+
+.summary
+    max-width: 1000px
+    margin: spacing(12)
+    display: flex
+    gap: spacing(4)
+    flex-direction: column
+    grid-auto-rows: max-content
+    justify-items: flex-start
+    @media (max-width: 1000px)
+        margin: spacing(6) spacing(3)
+
+    .bc-button
+        align-self: flex-start
+
+        &.add-to-cart
+            padding-left: spacing(6)
+            padding-right: spacing(6)
+
+    .product_title
+        font-size: 1.5rem
+        font-weight: 500
+
+    .price
+        font-weight: 400
+        font-size: 1.125rem
+
+$light-gray: #716C6C
+$dark-gray: #0D0D0D
+
+.size-guide-button
+    margin-bottom: spacing(4)
+    text-decoration: underline
+    text-transform: uppercase
+    span
+        cursor: pointer
+
+.variations-wrapper
+    margin-bottom: spacing(2)
+    display: flex
+    gap: spacing(2)
+    .variation-selector
+        display: flex
+        gap: spacing(2)
+    input[type="radio"]
+        display: none
+
+    span
+        font-size: fonts.$font-small
+        display: inline-block
+        padding: 10px
+        text-transform: uppercase
+        border: 2px solid $light-gray
+        color: $light-gray
+
+    input[type="radio"]:checked + span
+        color: $dark-gray
+        border-color: $dark-gray
+
+.variations_form
+    margin-bottom: spacing(6)
+
+.up-sells
+    h2
+        font-size: 2.25rem
+        text-transform: uppercase
+        text-align: center
+    &.products
+        display: flex
+        flex-direction: column
+        margin-top: spacing(20)
+    products
+        margin-top: spacing(12)

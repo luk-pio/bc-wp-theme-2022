@@ -221,12 +221,12 @@ button {
 }
 
 .bc-button {
-  background-color: unset;
-  color: #ebff00;
   text-transform: uppercase;
-  background-color: #000;
-  border: none;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  box-shadow: 2px 2px 4px var(--color-shadow);
   border-radius: 4px;
+  padding: 8px 12px;
 }
 
 .bc-button::selection {
@@ -782,21 +782,21 @@ button {
   transform: rotate(-45deg);
 }
 
-form p {
+.wpcf7-form p {
   flex-direction: column;
   margin-bottom: 16px;
   display: flex;
 }
 
-form.wpcf7-form p {
+.wpcf7-form.wpcf7-form p {
   margin-bottom: 16px;
 }
 
-form.wpcf7-form br {
+.wpcf7-form.wpcf7-form br {
   display: none;
 }
 
-form input[type="submit"] {
+.wpcf7-form input[type="submit"] {
   width: 100%;
   color: #ebff00;
   text-transform: uppercase;
@@ -806,7 +806,7 @@ form input[type="submit"] {
   padding: 8px 0;
 }
 
-label {
+.wpcf7-form label {
   border-bottom: .6px solid #000;
   margin-bottom: 24px;
   position: relative;
@@ -892,7 +892,7 @@ label:focus-within > span.bc-form-label, .input-selected {
 }
 
 .products {
-  max-width: 1300px;
+  max-width: 1440px;
   grid-row-gap: 64px;
   color: #000;
   grid-template-columns: repeat(3, 1fr);
@@ -901,7 +901,7 @@ label:focus-within > span.bc-form-label, .input-selected {
   display: grid;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 845px) {
   .products {
     grid-template-columns: repeat(2, 1fr);
     margin-left: auto;
@@ -1034,9 +1034,19 @@ label:focus-within > span.bc-form-label, .input-selected {
   border-radius: 4px;
 }
 
+.woocommerce-breadcrumb {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.woocommerce-breadcrumb a {
+  text-decoration: none;
+}
+
 .bc-main {
+  max-width: 1720px;
   width: 100%;
-  margin-bottom: 80px;
+  margin: 64px auto 80px;
 }
 
 .bc-main .bc-divider {
@@ -1049,11 +1059,17 @@ label:focus-within > span.bc-form-label, .input-selected {
 }
 
 .bc-main .bc-page-meta {
-  margin: 136px 48px 0;
+  margin: 48px 48px 32px;
+}
+
+@media (max-width: 845px) {
+  .bc-main .bc-page-meta {
+    margin: 48px 16px 0;
+  }
 }
 
 p {
-  font-size: .8rem;
+  font-size: 1.125rem;
   font-weight: lighter;
   line-height: 140%;
 }
@@ -1177,44 +1193,145 @@ p {
   max-width: 500px;
 }
 
-.single-product .product {
-  margin: 0 208px;
+.single-product-content {
+  justify-content: stretch;
+  align-items: center;
   display: flex;
 }
 
-.single-product .summary {
-  grid-gap: 16px;
-  grid-auto-rows: max-content;
-  grid-auto-flow: row;
-  align-items: center;
-  justify-items: flex-start;
-  margin-left: 40px;
-  display: inline-grid;
+@media (max-width: 845px) {
+  .single-product-content {
+    flex-direction: column;
+  }
 }
 
-.woocommerce-product-gallery--with-images {
+.swiper-carousel {
+  max-width: 720px;
   width: 50%;
-  text-align: center;
-  padding-top: 20px;
+  flex-direction: row;
+  display: flex;
+  position: relative;
 }
 
-.woocommerce-product-gallery__wrapper {
-  width: 90%;
-  margin: 0 auto;
+@media (min-width: 1300px) {
+  .swiper-carousel {
+    width: 45%;
+  }
 }
 
-.slick-slide {
-  margin: 10px;
+@media (max-width: 1100px) {
+  .swiper-carousel {
+    width: 55%;
+  }
 }
 
-.slick-slide img {
+@media (max-width: 845px) {
+  .swiper-carousel {
+    width: 100%;
+  }
+}
+
+.swiper-wrapper {
   width: 100%;
-  border: 2px solid #fff;
+  heigth: auto;
 }
 
-.wrapper .slick-dots li button:before {
-  color: #fff;
-  font-size: 20px;
+.swiper-slide img {
+  width: 100%;
+}
+
+.summary {
+  max-width: 1000px;
+  flex-direction: column;
+  grid-auto-rows: max-content;
+  justify-items: flex-start;
+  gap: 32px;
+  margin: 96px;
+  display: flex;
+}
+
+@media (max-width: 1000px) {
+  .summary {
+    margin: 48px 24px;
+  }
+}
+
+.summary .bc-button {
+  align-self: flex-start;
+}
+
+.summary .bc-button.add-to-cart {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.summary .product_title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.summary .price {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.size-guide-button {
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  text-decoration: underline;
+}
+
+.size-guide-button span {
+  cursor: pointer;
+}
+
+.variations-wrapper {
+  gap: 16px;
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.variations-wrapper .variation-selector {
+  gap: 16px;
+  display: flex;
+}
+
+.variations-wrapper input[type="radio"] {
+  display: none;
+}
+
+.variations-wrapper span {
+  text-transform: uppercase;
+  color: #716c6c;
+  border: 2px solid #716c6c;
+  padding: 10px;
+  font-size: .8rem;
+  display: inline-block;
+}
+
+.variations-wrapper input[type="radio"]:checked + span {
+  color: #0d0d0d;
+  border-color: #0d0d0d;
+}
+
+.variations_form {
+  margin-bottom: 48px;
+}
+
+.up-sells h2 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2.25rem;
+}
+
+.up-sells.products {
+  flex-direction: column;
+  margin-top: 160px;
+  display: flex;
+}
+
+.up-sells products {
+  margin-top: 96px;
 }
 
 .wp-block-video, .wp-block-video video {

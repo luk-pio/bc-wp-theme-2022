@@ -1,76 +1,18 @@
 <?php
-// $roots_includes = array(
-//   '/functions/body-class.php',
-//   '/functions/connections.php'
-// );
 
-// foreach ($roots_includes as $file) {
-//   if (!$filepath = locate_template($file)) {
-//     trigger_error("Error locating `$file` for inclusion!", E_USER_ERROR);
-//   }
+$roots_includes = array(
+  './functions/setup.php',
+  './functions/single-product.php',
+);
 
-//   require_once $filepath;
-// }
-// unset($file, $filepath);
+foreach ($roots_includes as $file) {
+  if (!$filepath = locate_template($file)) {
+    trigger_error("Error locating `$file` for inclusion!", E_USER_ERROR);
+  }
 
-/**
- * Setup Theme
- */
-function setup()
-{
-  add_theme_support("post-thumbnails");
-  // Add dynamic title tag support
-  add_theme_support("title-tag");
-  add_image_sizes();
+  require_once $filepath;
 }
-add_action("after_setup_theme", "setup");
-
-function add_image_sizes()
-{
-  add_image_size('product-image', 800, 1000, array('center', 'center'));
-}
-
-function bc_theme_mods()
-{
-  set_theme_mod('footer-animation', 'Animation-Footer');
-}
-
-add_action('init', 'bc_theme_mods');
-
-
-/**
- * Enqueue CSS
- */
-function EnqueueMyStyles()
-{
-  wp_enqueue_script('custom-js', get_template_directory_uri() . '/scripts/index.js', array(), '1.0.0', true);
-  wp_enqueue_style('my-main-style', get_stylesheet_uri(), false, '20150320');
-}
-add_action('wp_enqueue_scripts', 'EnqueueMyStyles');
-
-/*
- * Load i18n
- */
-function my_theme_load_theme_textdomain()
-{
-  load_theme_textdomain('bc-theme', get_template_directory() . '/languages');
-}
-add_action('after_setup_theme', 'my_theme_load_theme_textdomain');
-
-// load textdomain and .mo file if "lang" is set
-load_theme_textdomain('theme-domain', TEMPLATEPATH . '/lang');
-
-/*
- * Add SVG file upload
- */
-function add_file_types_to_uploads($file_types)
-{
-  $new_filetypes = array();
-  $new_filetypes['svg'] = 'image/svg+xml';
-  $file_types = array_merge($file_types, $new_filetypes);
-  return $file_types;
-}
-add_filter('upload_mimes', 'add_file_types_to_uploads');
+unset($file, $filepath);
 
 /**
  * Register menu
@@ -116,17 +58,17 @@ function bc_get_lang_switcher()
   $current_language = $languages_array[$current_language];
   array_splice($languages_array, $index, 1);
 ?>
-  <div class="lang-switcher" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+<div class="lang-switcher" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
     <div class="current-language">
-      <?php echo $current_language['short_language_name'];
+        <?php echo $current_language['short_language_name'];
       ?>
-      <div class="chevron-icon" :class="open && 'rot-180'">
-        <?php get_template_part("static/icons/Chevron", "Down.svg"); ?>
-      </div>
+        <div class="chevron-icon" :class="open && 'rot-180'">
+            <?php get_template_part("static/icons/Chevron", "Down.svg"); ?>
+        </div>
     </div>
     <div id="language-dropdown-hover-filler"></div>
     <ul x-show="open" x-transition.opacity class="language-dropdown-list">
-      <?php foreach ($languages_array as $name => $item) {
+        <?php foreach ($languages_array as $name => $item) {
       ?>
         <?php
         $trp = TRP_Translate_Press::get_trp_instance();
@@ -134,14 +76,14 @@ function bc_get_lang_switcher()
         $url = $url_converter->get_url_for_language($item["language_code"], false);
         ?>
         <a href="<?php echo esc_url($url); ?>">
-          <li>
-            <span><?php echo $item['short_language_name'] ?></span>
-          </li>
+            <li>
+                <span><?php echo $item['short_language_name'] ?></span>
+            </li>
         </a>
-      <?php
+        <?php
       } ?>
     </ul>
-  </div><?php
+</div><?php
       }
         ?>
 
@@ -205,17 +147,17 @@ function bc_category_menu()
 function bc_mobile_menu()
 {
 ?>
-  <div class="mobile-menu-container" x-data="{showMenu: false}" @click.away="showMenu = false">
+<div class="mobile-menu-container" x-data="{showMenu: false}" @click.away="showMenu = false">
     <div @click.prevent="showMenu = !showMenu" id="nav-burger" class="icon">
-      <div id="nav-icon4" :class="showMenu && 'open'">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+        <div id="nav-icon4" :class="showMenu && 'open'">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
     <div class="mobile-menu-sidebar" :class="showMenu && 'menu-open'">
-      <div class="mobile-menu-content">
-        <?php $current_collection = bc_get_current_collection();
+        <div class="mobile-menu-content">
+            <?php $current_collection = bc_get_current_collection();
         if ($current_collection) {
           $collection_title = $current_collection->current_collection;
           $collection_url = get_permalink($current_collection->ID);
@@ -224,24 +166,24 @@ function bc_mobile_menu()
         }
         ?>
 
-        <?php
+            <?php
         echo bc_category_menu();
         ?>
 
-        <div id="mobile-menu-social">
-          <a class="social-icon" href="https://www.instagram.com/berenika_cz/">
-            <?php get_template_part("static/icons/Icon", "IG.svg"); ?>
-          </a>
-          <a class="social-icon" href="https://pl-pl.facebook.com/BerenikaCzarnota/">
-            <?php get_template_part("static/icons/Icon", "FB.svg"); ?>
-          </a>
+            <div id="mobile-menu-social">
+                <a class="social-icon" href="https://www.instagram.com/berenika_cz/">
+                    <?php get_template_part("static/icons/Icon", "IG.svg"); ?>
+                </a>
+                <a class="social-icon" href="https://pl-pl.facebook.com/BerenikaCzarnota/">
+                    <?php get_template_part("static/icons/Icon", "FB.svg"); ?>
+                </a>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
 
-  <?php
+<?php
 }
 
 function bc_get_desktop_nav()
@@ -260,66 +202,24 @@ function bc_get_desktop_nav()
       $url = $menu_item->url;
       if ($title == "Shop" || $title == "Sklep") {
   ?>
-        <li class="desktop-shop-dropdown" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-          <?php echo $title ?>
-          <div class="desktop-category-hover-filler"></div>
-          <div class="desktop-category-menu" x-show="open" x-transition.opacity>
-            <div class="desktop-category-filler"></div>
-            <?php echo bc_category_menu() ?>
-          </div>
-          <div class='chevron-icon' :class="open && 'rot-180'">
-            <?php get_template_part("static/icons/Chevron", "Down.svg") ?>
-          </div>
-        </li>
-    <?php
+<li class="desktop-shop-dropdown" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+    <?php echo $title ?>
+    <div class="desktop-category-hover-filler"></div>
+    <div class="desktop-category-menu" x-show="open" x-transition.opacity>
+        <div class="desktop-category-filler"></div>
+        <?php echo bc_category_menu() ?>
+    </div>
+    <div class='chevron-icon' :class="open && 'rot-180'">
+        <?php get_template_part("static/icons/Chevron", "Down.svg") ?>
+    </div>
+</li>
+<?php
       } else echo '<a href="' . $url . '"><li>' . $title . '</li></a>';
     }
   } else {
     echo '<ul></ul>';
   }
 }
-
-function mytheme_add_woocommerce_support()
-{
-  add_theme_support('woocommerce', array(
-    'thumbnail_image_width' => 800,
-    'gallery_thumbnail_image_width' => 800,
-    'single_image_width' => 800,
-
-    'product_grid' => array(
-      'default_rows' => 3,
-      'min_rows' => 2,
-      'max_rows' => 4,
-      'default_columns' => 3,
-      'min_columns' => 2,
-      'max_columns' => 4,
-    ),
-  ));
-}
-add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
-
-add_filter('woocommerce_get_image_size_gallery_thumbnail', function ($size) {
-  return array(
-    'width' => 800,
-    'height' => 1000,
-    'crop' => 1,
-  );
-});
-add_filter('woocommerce_get_image_size_thumbnail', function ($size) {
-  return array(
-    'width' => 800,
-    'height' => 1000,
-    'crop' => 1,
-  );
-});
-add_filter('woocommerce_get_image_size_single', function ($size) {
-  return array(
-    'width' => 800,
-    'height' => 1000,
-    'crop' => 1,
-  );
-});
-
 
 /**
  * Change a currency symbol
@@ -350,17 +250,17 @@ function bc_product_categories($args = array())
 
   if ($terms) {
     ?>
-    <ul class="product-categories-container">
-      <?php foreach ($terms as $term) { ?>
-        <a href=" <?php echo esc_url(get_term_link($term)) ?>" class=" <?php echo $term->slug ?> ">
-          <li class="category"> <?php woocommerce_subcategory_thumbnail($term); ?>
+<ul class="product-categories-container">
+    <?php foreach ($terms as $term) { ?>
+    <a href=" <?php echo esc_url(get_term_link($term)) ?>" class=" <?php echo $term->slug ?> ">
+        <li class="category"> <?php woocommerce_subcategory_thumbnail($term); ?>
             <div class="category-title-container">
-              <h2 class="category-title"> <?php echo $term->name ?> </h2>
+                <h2 class="category-title"> <?php echo $term->name ?> </h2>
             </div>
-          </li>
-        </a>
-      <?php } ?>
-    </ul>
+        </li>
+    </a>
+    <?php } ?>
+</ul>
 <?php
   }
 }
@@ -382,15 +282,68 @@ function add_on_hover_shop_loop_image()
   }
 }
 
-remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+function bc_get_gallery_image_html($attachment_id, $main_image = false, $classes)
+{
+  $flexslider        = (bool) apply_filters('woocommerce_single_product_flexslider_enabled', get_theme_support('wc-product-gallery-slider'));
+  $gallery_thumbnail = wc_get_image_size('gallery_thumbnail');
+  $thumbnail_size    = apply_filters('woocommerce_gallery_thumbnail_size', array($gallery_thumbnail['width'], $gallery_thumbnail['height']));
+  $image_size        = apply_filters('woocommerce_gallery_image_size', $flexslider || $main_image ? 'woocommerce_single' : $thumbnail_size);
+  $full_size         = apply_filters('woocommerce_gallery_full_size', apply_filters('woocommerce_product_thumbnails_large_size', 'full'));
+  $thumbnail_src     = wp_get_attachment_image_src($attachment_id, $thumbnail_size);
+  $full_src          = wp_get_attachment_image_src($attachment_id, $full_size);
+  $alt_text          = trim(wp_strip_all_tags(get_post_meta($attachment_id, '_wp_attachment_image_alt', true)));
+  $image             = wp_get_attachment_image(
+    $attachment_id,
+    $image_size,
+    false,
+    apply_filters(
+      'woocommerce_gallery_image_html_attachment_image_params',
+      array(
+        'title'                   => _wp_specialchars(get_post_field('post_title', $attachment_id), ENT_QUOTES, 'UTF-8', true),
+        'data-caption'            => _wp_specialchars(get_post_field('post_excerpt', $attachment_id), ENT_QUOTES, 'UTF-8', true),
+        'data-src'                => esc_url($full_src[0]),
+        'data-large_image'        => esc_url($full_src[0]),
+        'data-large_image_width'  => esc_attr($full_src[1]),
+        'data-large_image_height' => esc_attr($full_src[2]),
+        'class'                   => esc_attr($main_image ? 'wp-post-image' : ''),
+      ),
+      $attachment_id,
+      $image_size,
+      $main_image
+    )
+  );
 
-// add_action('woocommerce_before_single_product', 'woocommerce_template_single_title', 15);
+  return '<div data-thumb="' . esc_url($thumbnail_src[0]) . '" data-thumb-alt="' . esc_attr($alt_text) . '" class="' . $classes . '"><a href="' . esc_url($full_src[0]) . '">' . $image . '</a></div>';
+}
 
-remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
-
-remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
-remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
-remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
-add_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 15);
-
-remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+function bc_show_product_thumbnails()
+{
+  global $post, $product;
+  $attachment_ids = $product->get_gallery_image_ids();
+  if (has_post_thumbnail()) {
+    $thumbanil_id   = array(get_post_thumbnail_id());
+    $attachment_ids = array_merge($thumbanil_id, $attachment_ids);
+  }
+  $product_video_thumb_id  = get_post_meta(get_the_ID(), '_product_video_thumb_url', true);
+  $custom_thumbnail        = get_post_meta(get_the_ID(), '_custom_thumbnail', true);
+  $product_video_thumb_url = wc_placeholder_img_src();
+  if ($product_video_thumb_id) {
+    $product_video_thumb_url = wp_get_attachment_image_url($product_video_thumb_id);
+  }
+  $gallery_thumbnail = wc_get_image_size('gallery_thumbnail');
+  if (($attachment_ids && $product->get_image_id()) || !empty(get_post_meta(get_the_ID(), '_nickx_video_text_url', true))) {
+    // if (get_option('nickx_place_of_the_video') == 'yes' && $extend->is_nickx_act_lic()) {
+    //   get_video_thumbanil_html($product_video_thumb_url, $custom_thumbnail, $post);
+    // }
+    foreach ($attachment_ids as $attachment_id) {
+      $props = wc_get_product_attachment_props($attachment_id, $post);
+      if (!$props['url']) {
+        continue;
+      }
+      echo apply_filters('woocommerce_single_product_image_thumbnail_html', sprintf('<li class="swiper-slide ' . (($thumbanil_id[0] == $attachment_id) ? 'wp-post-image-thumb' : '') . '" title="%s">%s</li>', esc_attr($props['caption']), wp_get_attachment_image($attachment_id, "product-image", 0, array('data-skip-lazy' => 'true'))), $attachment_id);
+    }
+    // if (get_option('nickx_place_of_the_video') == 'no' && get_option('nickx_place_of_the_video') != 'yes' && get_option('nickx_place_of_the_video') != 'second' || !$extend->is_nickx_act_lic()) {
+    //   get_video_thumbanil_html($product_video_thumb_url, $custom_thumbnail, $post);
+    // }
+  }
+}

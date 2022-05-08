@@ -4,7 +4,8 @@
 @use "../global/fonts"
 
 .bc-main
-    margin-bottom: spacing(10)
+    margin: spacing(8) auto spacing(10)
+    max-width: 1720px
     width: 100%
     .bc-divider
         max-width: 800px
@@ -14,9 +15,11 @@
         margin: 0 spacing(8)
 
     .bc-page-meta
-        margin: 136px 48px 0 48px
+        margin: spacing(6) spacing(6) spacing(4)
+        @include breakpoints.mobile
+            margin: spacing(6) spacing(2) 0
 
 p
-    font-size: fonts.$font-small
+    font-size: fonts.$font-regular
     line-height: 140%
     font-weight: lighter

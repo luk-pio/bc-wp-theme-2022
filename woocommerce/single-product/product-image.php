@@ -37,18 +37,57 @@ $wrapper_classes   = apply_filters(
 	)
 );
 ?>
-<div class="<?php echo esc_attr(implode(' ', array_map('sanitize_html_class', $wrapper_classes))); ?>" data-columns="<?php echo esc_attr($columns); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
-	<figure class="woocommerce-product-gallery__wrapper">
-		<?php
-		if ($post_thumbnail_id) {
-			$html = wc_get_gallery_image_html($post_thumbnail_id, true);
-		} else {
-			$html .= sprintf('<img src="%s" alt="%s" class="wp-post-image" />', esc_url(wc_placeholder_img_src('woocommerce_single')), esc_html__('Awaiting product image', 'woocommerce'));
-		}
 
-		echo apply_filters('woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+<div x-data="{swiper: null}" x-init="swiper = new Swiper($refs.container, {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 0,
+  
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+        1024: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+      },
+    })" class="swiper-carousel">
+	<div class="absolute inset-y-0 left-0 z-10 flex items-center">
+		<button @click="swiper.slidePrev()" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+			<svg viewBox="0 0 20 20" fill="currentColor" class="chevron-left w-6 h-6">
+				<path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+			</svg>
+		</button>
+	</div>
 
-		do_action('woocommerce_product_thumbnails');
-		?>
-	</figure>
+	<div class="swiper-container" x-ref="container">
+		<div class="swiper-wrapper">
+
+			<?php
+			// if ($post_thumbnail_id) {
+			// 	$html = wc_get_gallery_image_html($post_thumbnail_id, true);
+			// } else {
+			// 	$html .= sprintf('<div class="swiper-slide"><img src="%s" alt="%s" class="wp-post-image" /></div>', esc_url(wc_placeholder_img_src('woocommerce_single')), esc_html__('Awaiting product image', 'woocommerce'));
+			// }
+
+			// echo apply_filters('woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+
+			do_action('woocommerce_product_thumbnails');
+			?>
+
+		</div>
+	</div>
+	<div class="absolute inset-y-0 right-0 z-10 flex items-center">
+		<button @click="swiper.slidenext()" class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+			<svg viewbox="0 0 20 20" fill="currentcolor" class="chevron-right w-6 h-6">
+				<path fill-rule="evenodd" d="m7.293 14.707a1 1 0 010-1.414l10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+			</svg>
+		</button>
+	</div>
 </div>

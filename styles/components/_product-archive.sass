@@ -6,7 +6,7 @@
 @use "../global/mixins"
 
 .products
-    max-width: 1300px
+    max-width: 1440px
     margin: auto
     margin-top: 100px
     display: grid
@@ -14,13 +14,12 @@
     grid-auto-flow: row
     color: colors.$black
     grid-template-columns: repeat(3, 1fr)
-    @media (max-width: 700px)
+    @include breakpoints.mobile
         grid-template-columns: repeat(2, 1fr)
         margin-right: auto
         margin-left: auto
     @media (max-width: 420px)
         grid-template-columns: repeat(1, 1fr)
-
         font-size: fonts.$font-small
 
     .product
