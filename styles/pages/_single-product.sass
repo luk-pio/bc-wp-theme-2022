@@ -4,11 +4,11 @@
 @use "../utils/layout"
 @use "../global/fonts"
 @use "../global/mixins"
+@use "../components/out-of-stock"
 
 .single-product-content
     display: flex
     justify-content: stretch
-    align-items: center
     @include breakpoints.mobile
         flex-direction: column
 
@@ -42,15 +42,8 @@
     flex-direction: column
     grid-auto-rows: max-content
     justify-items: flex-start
-    @media (max-width: 1000px)
+    @media (max-width: 1100px)
         margin: spacing(6) spacing(3)
-
-    .bc-button
-        align-self: flex-start
-
-        &.add-to-cart
-            padding-left: spacing(6)
-            padding-right: spacing(6)
 
     .product_title
         font-size: 1.5rem
@@ -60,7 +53,7 @@
         font-weight: 400
         font-size: 1.125rem
 
-$light-gray: #716C6C
+$light-gray: #bababa
 $dark-gray: #0D0D0D
 
 .size-guide-button
@@ -70,31 +63,72 @@ $dark-gray: #0D0D0D
     span
         cursor: pointer
 
-.variations-wrapper
+.variations_form
     margin-bottom: spacing(2)
     display: flex
+    flex-direction: column
     gap: spacing(2)
-    .variation-selector
-        display: flex
-        gap: spacing(2)
-    input[type="radio"]
+
+    th.label
+        display: none
+    select
         display: none
 
-    span
-        font-size: fonts.$font-small
-        display: inline-block
-        padding: 10px
-        text-transform: uppercase
-        border: 2px solid $light-gray
-        color: $light-gray
+    .variation-radios
+        display: flex
+        gap: spacing(2)
+        input[type="radio"]
+            display: none
 
-    input[type="radio"]:checked + span
-        color: $dark-gray
-        border-color: $dark-gray
+        --label-padding: 10px
+        label
+            display: inline-block
+            padding: var(--label-padding)
+            text-transform: uppercase
+            border: 2px solid
+            border-color: var(--light-gray)
+            color: $light-gray
 
-.variations_form
-    margin-bottom: spacing(6)
+            &.out-of-stock::after
+                content: ""
+                display: block
+                position: relative
+                border-bottom: 1.5px solid
+                bottom: 50%
+                left: calc(-1 * var(--label-padding))
+                width: calc(100% + 2 *var(--label-padding))
 
+        input[type="radio"]:checked + label
+            color: $dark-gray
+            border-color: $dark-gray
+
+    .reset_variations
+        display: none !important
+
+    .single_variation_wrap
+        .woocommerce-variation
+            .stock
+                display: none !important
+
+        .woocommerce-variation-add-to-cart
+            .quantity
+                display: none !important
+
+        button
+            @include mixins.bc-button
+            align-self: flex-start
+            padding-left: spacing(6)
+            padding-right: spacing(6)
+            &.wc-variation-is-unavailable
+                display: none
+.qty
+    display: none !important
+
+.single_add_to_cart_button
+    @include mixins.bc-button
+
+.woocommerce-product-details__short-description
+    text-align: justify
 .up-sells
     h2
         font-size: 2.25rem
@@ -104,5 +138,5 @@ $dark-gray: #0D0D0D
         display: flex
         flex-direction: column
         margin-top: spacing(20)
-    products
+    .products
         margin-top: spacing(12)

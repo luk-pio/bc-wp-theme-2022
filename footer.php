@@ -30,11 +30,13 @@
             ?>
         </nav>
         <div id="footer-image-copy-container">
-            <div id="footer-image-container">
-                <img id="footer-image" src="<?php echo get_template_directory_uri(); ?>/static/images/Animation-Footer.png" alt="Animation of three people knitting">
+            <div id="footer-image-container" class="<?php echo is_front_page() ? 'hidden' : '' ?>">
+                <lottie-player class="footer-image work-in-progress-animation" background="transparent" speed="1" loop
+                    autoplay src="<?php echo bc_get_attachment_url_by_slug('work-in-progress') ?>" alt="">
+                </lottie-player>
             </div>
             <div id="footer-copy">
-                <div id="footer-designed-by"><?php _e("Store designed & develped by ", "bc-theme") ?>
+                <div id="footer-designed-by"><?php _e("Designed & developed by ", "bc-theme") ?>
                     <a id="wiseculture-url" href="https://www.wiseculture.space/">WiseCulture.Space</a>
                 </div>
                 <div id="footer-copywrite"><?php _e("© 2022 BERENIKA CZARNOTA", "bc-theme") ?></div>
@@ -49,5 +51,14 @@
 
 <?php wp_footer(); ?>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+function showWaitingListAnimation() {
+    jQuery('.cwginstock-subscribe-form').after(
+        '<lottie-player src="<?php echo bc_get_attachment_url_by_slug('waiting-list') ?>" background="transparent" speed="1" loop autoplay></lottie-player>'
+    )
+
+}
+showWaitingListAnimation();
+</script>
 
 </html>

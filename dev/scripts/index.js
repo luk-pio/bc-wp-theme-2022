@@ -49,39 +49,30 @@ function myFunction() {
   }
 }
 
-// jQuery(document).ready(function () {
-//   jQuery(".woocommerce-product-gallery__wrapper").slick({
-//     dots: true,
-//     variableWidth: false,
-//     slidesToShow: 1,
-//     centerMode: true,
-//   });
-// });
-
-// function carousel() {
-//   return {
-//     active: 0,
-//     init() {
-//       var flkty = new Flickity(this.$refs.carousel, {
-//         wrapAround: true,
-//       });
-//       flkty.on("change", (i) => (this.active = i));
-//     },
-//   };
-// }
-
-// function carouselFilter() {
-//   return {
-//     active: 0,
-//     changeActive(i) {
-//       this.active = i;
-
-//       this.$nextTick(() => {
-//         let flkty = Flickity.data(this.$el.querySelectorAll(".carousel")[i]);
-//         flkty.resize();
-
-//         console.log(flkty);
-//       });
-//     },
-//   };
-// }
+// Use radio buttons for variation select
+jQuery(document).on("change", ".variation-radios input", function () {
+  jQuery(".variation-radios input:checked").each(function (index, element) {
+    var $el = jQuery(element);
+    var thisName = $el.attr("name");
+    var thisVal = $el.attr("value");
+    jQuery('select[name="' + thisName + '"]')
+      .val(thisVal)
+      .trigger("change");
+  });
+});
+jQuery(document).on("woocommerce_update_variation_values", function () {
+  setTimeout(showWaitingListAnimation, 0);
+  jQuery(".variation-radios input").each(function (index, element) {
+    var $el = jQuery(element);
+    var thisName = $el.attr("name");
+    var thisVal = $el.attr("value");
+    $el.removeAttr("disabled");
+    if (
+      jQuery(
+        'select[name="' + thisName + '"] option[value="' + thisVal + '"]'
+      ).is(":disabled")
+    ) {
+      $el.prop("disabled", true);
+    }
+  });
+});

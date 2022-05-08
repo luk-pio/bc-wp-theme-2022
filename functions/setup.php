@@ -37,6 +37,23 @@ function EnqueueMyStyles()
 }
 add_action('wp_enqueue_scripts', 'EnqueueMyStyles');
 
+/**
+ * Register menu
+ */
+function register_my_menus()
+{
+    register_nav_menus(
+        array(
+            'header-menu' => "Desktop Header Menu",
+            'mobile-menu' => "Mobile menu",
+            'footer-menu' => "Footer menu",
+            'categories-menu' => "Categories Menu"
+        )
+    );
+}
+add_action('init', 'register_my_menus');
+
+
 /*
  * Load i18n
  */
@@ -56,7 +73,11 @@ function add_file_types_to_uploads($file_types)
 {
     $new_filetypes = array();
     $new_filetypes['svg'] = 'image/svg+xml';
+    $new_filetypes['json'] = 'application/json';
     $file_types = array_merge($file_types, $new_filetypes);
+
+
+
     return $file_types;
 }
 add_filter('upload_mimes', 'add_file_types_to_uploads');
@@ -109,3 +130,18 @@ add_filter('woocommerce_get_image_size_single', function ($size) {
         'crop' => 1,
     );
 });
+
+/**
+ * Change a currency symbol
+ */
+add_filter('woocommerce_currency_symbol', 'change_existing_currency_symbol', 10, 2);
+
+function change_existing_currency_symbol($currency_symbol, $currency)
+{
+    switch ($currency) {
+        case 'PLN':
+            $currency_symbol = 'PLN';
+            break;
+    }
+    return $currency_symbol;
+}

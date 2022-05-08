@@ -1,5 +1,6 @@
 @use "../utils/breakpoints"
 @use "../global/fonts"
+@use "../global/mixins"
 @use "../utils/spacing" as * 
 
 body
@@ -26,14 +27,7 @@ button
     border-radius: 4px
     border: none
 .bc-button
-    text-transform: uppercase
-    border-radius: 4px
-    background-color: var(--color-accent)
-    color: var(--color-text)
-    box-shadow: 2px 2px 4px var(--color-shadow)
-    padding: spacing(1) spacing(1.5)
-    &::selection
-        background: unset
+    @include mixins.bc-button
 
 .bc-divider
     height: 1px

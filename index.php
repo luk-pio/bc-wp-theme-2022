@@ -96,6 +96,25 @@ endif;
 
     <div class="materials-container">
         <div class="materials-inner-container">
+            <h2 class="materials-heading">Waiting List</h2>
+            <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque faucibus viverra
+                orci
+                nibh nulla purus
+                tempus. Ornare egestas porta quis integer neque, auctor viverra a porttitor. Amet ultrices at erat quam.
+                Etiam
+                pellentesque orci, vestibulum, ac a lectus neque. Nunc sapien sed in at sed proin cras. Dolor ipsum
+                nisi,
+                diam
+                habitant aliquet massa.</p>
+            <lottie-player class="homepage-waiting-list-animation wp-block-image size-full" background="transparent"
+                speed="1" loop autoplay src="<?php echo bc_get_attachment_url_by_slug('waiting-list') ?>" alt="">
+            </lottie-player>
+
+        </div>
+    </div>
+
+    <div class="materials-container">
+        <div class="materials-inner-container">
             <h2 class="materials-heading">Materials</h2>
             <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque faucibus viverra
                 orci
@@ -107,10 +126,10 @@ endif;
                 diam
                 habitant aliquet massa.</p>
             <h3>ALL OUR PRODUCTS <br /> ARE <b>HAND MADE!</b></h3>
-            <figure class="homepage-materials-animation wp-block-image size-full"><img
-                    src="http://localhost:10004/wp-content/uploads/2022/04/stopka_gif.gif" alt=""
-                    class="wp-image-167" />
-            </figure>
+            <lottie-player class="homepage-materials-animation work-in-progress-animation wp-block-image size-full"
+                background="transparent" speed="1" loop autoplay
+                src="<?php echo bc_get_attachment_url_by_slug('work-in-progress') ?>" alt="">
+            </lottie-player>
 
         </div>
     </div>

@@ -48,26 +48,31 @@
 
     .desktop-category-menu
         -webkit-clip-path: inset(0 -1000px -1000px -100px)
-        background-color: var(--color-background)
         position: absolute
-        top: 38px
+        top: 13px
         left: -22px
-
-        .desktop-category-filler
-            height: 24px
 
         #menu-categories-menu
             font-size: 16px
             -webkit-clip-path: inset(0 -1000px -1000px -100px)
             clip-path: inset(0 -1000px -1000px -100px)
             background: var(--color-background)
-            padding: 0 16px 16px
+            padding: spacing(1) spacing(1) spacing(1)
             top: 14px
             left: -22px
             box-shadow: 0 0 5px var(--color-shadow)
             .category-menu-item-icon
                 height: 36px
                 width: 36px
+
+.desktop-category-filler
+    height: 24px
+    visibility: hidden
+
+.category-menu-item
+    display: flex
+    align-items: center
+
 #menu-desktop-menu
     @include breakpoints.mobile
         display: none
