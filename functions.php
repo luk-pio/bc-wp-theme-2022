@@ -2,10 +2,12 @@
 
 $roots_includes = array(
   './functions/setup.php',
-  './functions/single-product.php',
+  './functions/components.php',
   './functions/utils.php',
   './functions/header.php',
-  './functions/archive-product.php',
+  './functions/woocommerce/shared.php',
+  './functions/woocommerce/archive-product.php',
+  './functions/woocommerce/single-product.php',
 );
 
 foreach ($roots_includes as $file) {

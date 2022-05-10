@@ -1,37 +1,5 @@
 <?php
 
-// ALL WOOCOMMERCE PAGES
-function bc_main_content_wrapper()
-{
-    // BEFORE MAIN CONTENT
-    remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-    add_action('woocommerce_before_main_content', 'bc_output_content_wrapper', 10);
-
-    add_action('woocommerce_before_main_content', 'bc_page_meta_wrapper', 10);
-
-    remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
-}
-add_action("after_setup_theme", "bc_main_content_wrapper");
-
-function bc_output_content_wrapper()
-{
-    echo '<div class="bc-main">';
-}
-
-function bc_output_content_wrapper_end()
-{
-    echo '</div>';
-}
-
-function bc_page_meta_wrapper()
-{
-    echo '<div class="bc-page-meta">';
-}
-function bc_page_meta_wrapper_end()
-{
-    echo '</div>';
-}
-
 // SINGLE PRODUCT PAGE
 function bc_woocommerce_single_product()
 {
@@ -75,22 +43,37 @@ function bc_single_product_summary_wrapper_end()
 }
 
 
-function bc_woocommerce_archive_product()
+function bc_show_product_thumbnails()
 {
-    remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
-    add_action('woocommerce_before_shop_loop', 'bc_page_meta_wrapper_end', 40);
-
-
-    add_action('woocommerce_after_main_content', 'bc_divider', 5);
-    add_action('woocommerce_after_main_content', 'bc_product_categories', 6);
+    global $post, $product;
+    $attachment_ids = $product->get_gallery_image_ids();
+    if (has_post_thumbnail()) {
+        $thumbanil_id   = array(get_post_thumbnail_id());
+        $attachment_ids = array_merge($thumbanil_id, $attachment_ids);
+    }
+    $product_video_thumb_id  = get_post_meta(get_the_ID(), '_product_video_thumb_url', true);
+    $custom_thumbnail        = get_post_meta(get_the_ID(), '_custom_thumbnail', true);
+    $product_video_thumb_url = wc_placeholder_img_src();
+    if ($product_video_thumb_id) {
+        $product_video_thumb_url = wp_get_attachment_image_url($product_video_thumb_id);
+    }
+    $gallery_thumbnail = wc_get_image_size('gallery_thumbnail');
+    if (($attachment_ids && $product->get_image_id()) || !empty(get_post_meta(get_the_ID(), '_nickx_video_text_url', true))) {
+        // if (get_option('nickx_place_of_the_video') == 'yes' && $extend->is_nickx_act_lic()) {
+        //   get_video_thumbanil_html($product_video_thumb_url, $custom_thumbnail, $post);
+        // }
+        foreach ($attachment_ids as $attachment_id) {
+            $props = wc_get_product_attachment_props($attachment_id, $post);
+            if (!$props['url']) {
+                continue;
+            }
+            echo apply_filters('woocommerce_single_product_image_thumbnail_html', sprintf('<li class="swiper-slide ' . (($thumbanil_id[0] == $attachment_id) ? 'wp-post-image-thumb' : '') . '" title="%s">%s</li>', esc_attr($props['caption']), wp_get_attachment_image($attachment_id, "product-image", 0, array('data-skip-lazy' => 'true'))), $attachment_id);
+        }
+        // if (get_option('nickx_place_of_the_video') == 'no' && get_option('nickx_place_of_the_video') != 'yes' && get_option('nickx_place_of_the_video') != 'second' || !$extend->is_nickx_act_lic()) {
+        //   get_video_thumbanil_html($product_video_thumb_url, $custom_thumbnail, $post);
+        // }
+    }
 }
-add_action("after_setup_theme", "bc_woocommerce_archive_product");
-
-function bc_divider()
-{
-    echo '<div class="bc-divider-container"><div class="bc-divider"></div></div>';
-}
-
 
 function variation_radio_buttons($html, $args)
 {

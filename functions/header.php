@@ -122,7 +122,7 @@ function bc_get_desktop_nav()
             $url = $menu_item->url;
             if ($title == "Shop" || $title == "Sklep") {
     ?>
-<li class="desktop-shop-dropdown" x-data="{ open: true }" @mouseenter="open = true" @mouseleave="open = false">
+<li class="desktop-shop-dropdown" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
     <?php echo $title ?>
     <div class="desktop-category-hover-filler"></div>
     <div class="desktop-category-menu" x-show="open" x-transition.opacity>
