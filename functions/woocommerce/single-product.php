@@ -67,7 +67,15 @@ function bc_show_product_thumbnails()
             if (!$props['url']) {
                 continue;
             }
-            echo apply_filters('woocommerce_single_product_image_thumbnail_html', sprintf('<li class="swiper-slide ' . (($thumbanil_id[0] == $attachment_id) ? 'wp-post-image-thumb' : '') . '" title="%s">%s</li>', esc_attr($props['caption']), wp_get_attachment_image($attachment_id, "product-image", 0, array('data-skip-lazy' => 'true'))), $attachment_id);
+            echo apply_filters(
+                'woocommerce_single_product_image_thumbnail_html',
+                sprintf(
+                    '<li class="swiper-slide ' . (($thumbanil_id[0] == $attachment_id) ? 'wp-post-image-thumb' : '') . '" title="%s"><div class="swiper-zoom-container">%s</div></li>',
+                    esc_attr($props['caption']),
+                    wp_get_attachment_image($attachment_id, "product-image", 0, array('data-skip-lazy' => 'true'))
+                ),
+                $attachment_id
+            );
         }
         // if (get_option('nickx_place_of_the_video') == 'no' && get_option('nickx_place_of_the_video') != 'yes' && get_option('nickx_place_of_the_video') != 'second' || !$extend->is_nickx_act_lic()) {
         //   get_video_thumbanil_html($product_video_thumb_url, $custom_thumbnail, $post);
