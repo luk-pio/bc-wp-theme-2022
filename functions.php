@@ -6,6 +6,7 @@ $roots_includes = array(
   './functions/utils.php',
   './functions/header.php',
   './functions/woocommerce/shared.php',
+  './functions/woocommerce/product-categories.php',
   './functions/woocommerce/archive-product.php',
   './functions/woocommerce/single-product.php',
 );

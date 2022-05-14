@@ -45,7 +45,7 @@ $wrapper_classes   = apply_filters(
         el: '.swiper-pagination',
         clickable: true
       },
-      grabCursor: true,
+      grabCursor: false,
       slidesPerView: 1,
       spaceBetween: 0,
   

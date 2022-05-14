@@ -140,28 +140,3 @@ function bc_get_desktop_nav()
         echo '<ul></ul>';
     }
 }
-
-function bc_product_categories($args = array())
-{
-    $parentid = get_queried_object_id();
-    $uncategorized_id = 15;
-
-    $terms = get_terms(array('taxonomy' => 'product_cat', 'exclude' => array($parentid => $parentid, $uncategorized_id =>
-    $uncategorized_id)));
-
-    if ($terms) {
-        ?>
-<ul class="product-categories-container">
-    <?php foreach ($terms as $term) { ?>
-    <a href=" <?php echo esc_url(get_term_link($term)) ?>" class=" <?php echo $term->slug ?> ">
-        <li class="category"> <?php woocommerce_subcategory_thumbnail($term); ?>
-            <div class="category-title-container">
-                <h2 class="category-title"> <?php echo $term->name ?> </h2>
-            </div>
-        </li>
-    </a>
-    <?php } ?>
-</ul>
-<?php
-    }
-}

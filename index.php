@@ -37,7 +37,7 @@ endif;
     </div>
 
     <?php
-    bc_product_categories();
+    bc_product_categories_homepage();
     ?>
 
 

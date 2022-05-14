@@ -930,13 +930,14 @@ label:focus-within > span.bc-form-label, .input-selected {
 .products .woocommerce-loop-product__title {
   color: #000;
   border-radius: 4px;
-  margin: 8px 0;
+  margin: 8px 0 8px 16px;
   padding: 6.4px 0;
   font-size: .7rem;
   font-weight: 500;
 }
 
 .products .price {
+  margin-left: 16px;
   font-weight: 300;
 }
 
@@ -1008,8 +1009,6 @@ label:focus-within > span.bc-form-label, .input-selected {
 }
 
 .product-categories-container img {
-  height: unset;
-  width: auto;
   z-index: 1;
   transition: scale .1s ease-in-out;
   position: relative;
@@ -1017,6 +1016,18 @@ label:focus-within > span.bc-form-label, .input-selected {
 
 .product-categories-container img:hover {
   transform: scale(1.1);
+}
+
+.product-categories-container .homepage-category img:nth-of-type(2) {
+  padding: 18%;
+}
+
+.product-categories-container .homepage-category img:nth-of-type(1), .product-categories-container .homepage-category:hover img:nth-of-type(2) {
+  display: none;
+}
+
+.product-categories-container .homepage-category:hover img:nth-of-type(1) {
+  display: unset;
 }
 
 .product-categories-container .category-title-container {
@@ -1033,12 +1044,6 @@ label:focus-within > span.bc-form-label, .input-selected {
   padding: 8px 0;
   position: relative;
   bottom: 30px;
-}
-
-.product-categories-container .category-title-container:hover {
-  background: var(--color-accent);
-  box-shadow: 0px 4px 4px var(--color-shadow);
-  border-radius: 4px;
 }
 
 .woocommerce-breadcrumb {
