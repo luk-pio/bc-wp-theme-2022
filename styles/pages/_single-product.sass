@@ -6,34 +6,6 @@
 @use "../global/mixins"
 @use "../components/out-of-stock"
 
-.single-product-content
-    display: flex
-    justify-content: stretch
-    @include breakpoints.mobile
-        flex-direction: column
-
-.swiper-carousel
-    position: relative
-    flex-direction: row
-    display: flex
-    max-width: 720px
-    width: 50%
-    @media (min-width: 1300px)
-        width: 45%
-    @media (max-width: 1100px)
-        width: 55%
-
-    @include breakpoints.mobile
-        width: 100%
-
-.swiper-wrapper
-    width: 100%
-    heigth: auto
-
-.swiper-slide
-    img
-        width: 100%
-
 .summary
     max-width: 1000px
     margin: spacing(12)

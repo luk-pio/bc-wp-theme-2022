@@ -1,0 +1,80 @@
+@use "../utils/breakpoints"
+@use "../global/colors"
+@use "../utils/spacing" as * 
+@use "../utils/layout"
+@use "../global/fonts"
+@use "../global/mixins"
+
+.single-product-content
+    display: flex
+    justify-content: stretch
+    @include breakpoints.mobile
+        flex-direction: column
+
+.swiper-carousel
+    cursor: zoom-in !important
+    position: relative
+    flex-direction: row
+    display: flex
+    max-width: 720px
+    width: 50%
+    @media (min-width: 1300px)
+        width: 45%
+    @media (max-width: 1100px)
+        width: 55%
+
+    @include breakpoints.mobile
+        width: 100%
+
+.swiper-wrapper
+    width: 100%
+    heigth: auto
+
+.swiper-slide
+    img
+        width: 100%
+
+.swiper-pagination-bullet
+    width: 24px
+    height: 24px
+    display: inline-block
+    border-radius: 50%
+    border: 3px solid var(--color-accent)
+    background: none
+    opacity: 1
+
+.swiper-pagination-bullet-active
+    background: var(--color-accent)
+
+.swiper-button-container
+    z-index: 10
+    top: 0
+    bottom: 0
+    position: absolute
+    align-items: center
+    display: flex
+    .chevron-icon
+        svg
+            margin-top: 5px
+            width: 23px
+            height: auto
+
+.swiper-button-container-left
+    left: 8px
+    .chevron-icon
+        transform: rotate(90deg)
+
+.swiper-button-container-right
+    right: 16px
+    .chevron-icon
+        transform: rotate(-90deg)
+
+.swiper-button
+    width: 46px
+    height: 46px
+    margin-right: -0.5rem
+    justify-content: center
+    align-items: center
+    display: flex
+    border-radius: 50%
+    background-color: #ffffff6b
