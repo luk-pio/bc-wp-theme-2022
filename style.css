@@ -1093,13 +1093,9 @@ label:focus-within > span.bc-form-label, .input-selected {
   }
 }
 
-.swiper-wrapper {
+.swiper-wrapper, .swiper-slide img {
   width: 100%;
-  heigth: auto;
-}
-
-.swiper-slide img {
-  width: 100%;
+  height: auto;
 }
 
 .swiper-pagination-bullet {

@@ -514,6 +514,13 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"2mMqi":[function(require,module,exports) {
+require("./form-input-animation");
+require("./sticky-header");
+require("./swiper-slider");
+require("./waiting-list"); // window.Alpine = Alpine;
+ // Alpine.start();
+
+},{"./form-input-animation":"2AHZL","./sticky-header":"7XwEa","./swiper-slider":"8QUph","./waiting-list":"5lNRs"}],"2AHZL":[function(require,module,exports) {
 function placeholderActive(el) {
     if (el.attr("placeholder") && el.val() === "") return true;
     return false;
@@ -524,6 +531,8 @@ jQuery("span > input").focusout(function() {
     if (!placeholderActive(jQuery(this))) jQuery(this).parent().parent().children(".bc-form-label").addClass("input-selected");
     else if (!placeholderActive(jQuery(this))) jQuery(this).parent().parent().children(".bc-form-label").removeClass("input-selected");
 });
+
+},{}],"7XwEa":[function(require,module,exports) {
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {
     myFunction();
@@ -544,6 +553,32 @@ function myFunction() {
         body.classList.remove("sticky-header-offset");
     }
 }
+
+},{}],"8QUph":[function(require,module,exports) {
+var swiper = new Swiper(document.getElementById("single-product-swiper-container"), {
+    loop: true,
+    zoom: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+    },
+    navigation: {
+        nextEl: "#single-product-swiper-button-container-right",
+        prevEl: "#single-product-swiper-button-container-left"
+    },
+    grabCursor: false,
+    slidesPerView: 1,
+    spaceBetween: 0
+});
+var rightButton = document.getElementById("single-product-swiper-button-container-right");
+var leftButton = document.getElementById("single-product-swiper-button-container-left"); // rightButton.addEventListener("touchstart", (ev) => {
+ //   swiper.slideNext();
+ // });
+ // leftButton.addEventListener("touchstart", (ev) => {
+ //   swiper.slidePrev();
+ // });
+
+},{}],"5lNRs":[function(require,module,exports) {
 // Use radio buttons for variation select
 jQuery(document).on("change", ".variation-radios input", function() {
     jQuery(".variation-radios input:checked").each(function(index, element) {

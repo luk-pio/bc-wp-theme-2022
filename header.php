@@ -12,9 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap">
 
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/tailwindcss@1.2.0/dist/tailwind.min.css" />
-    <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js"></script>
 
     <?php wp_head(); ?>

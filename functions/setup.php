@@ -25,17 +25,21 @@ function bc_theme_mods()
 
 add_action('init', 'bc_theme_mods');
 
-/**
- * Enqueue CSS
- */
-function EnqueueMyStyles()
+function enqueue_my_scripts()
 {
-    wp_enqueue_script('alpinejs', "//unpkg.com/alpinejs", array(), '1.0.0', true);
-    wp_enqueue_script('custom-js', get_template_directory_uri() . '/scripts/index.js', array(), '1.0.0', true);
-    wp_enqueue_script('carousel-js', get_template_directory_uri() . '/dev/scripts/carousel.js', array(), '1.0.0', true);
-    wp_enqueue_style('my-main-style', get_stylesheet_uri(), false, '20150320');
+
+    wp_enqueue_script('alpine.js', "//unpkg.com/alpinejs", array(), '1.0.0', true);
+    wp_enqueue_script('swiper.js', "//unpkg.com/swiper@6.8.4/swiper-bundle.min.js", array(), '1.0.0', true);
+    wp_enqueue_script('index.js', get_template_directory_uri() . '/scripts/' . 'index.js', array('alpine.js', 'swiper.js'), '1.0.0', true);
 }
-add_action('wp_enqueue_scripts', 'EnqueueMyStyles');
+add_action('wp_enqueue_scripts', 'enqueue_my_scripts');
+
+function enqueue_my_styles()
+{
+    wp_enqueue_style('swiper.css', "//unpkg.com/swiper@6.8.4/swiper-bundle.min.css");
+    wp_enqueue_style('main.css', get_stylesheet_uri(), false, '20150320');
+}
+add_action('wp_enqueue_scripts', 'enqueue_my_styles');
 
 /**
  * Register menu

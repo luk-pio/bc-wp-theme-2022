@@ -14,7 +14,8 @@
       "source": [
         "dev/scripts/index.js"
       ],
-      "distDir": "./scripts"
+      "distDir": "./scripts",
+      "outputFormat": "global"
     }
   },
   "scripts": {
@@ -33,10 +34,9 @@
   "homepage": "https://github.com/luk-pio/bc-wp-theme-2022#readme",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.4.1",
-    "parcel": "^2.4.1",
-    "sass": "^1.50.0"
+    "parcel": "^2.4.1"
   },
   "dependencies": {
-    "alpinejs": "^3.10.2"
+    "sass": "^1.50.0"
   }
 }
