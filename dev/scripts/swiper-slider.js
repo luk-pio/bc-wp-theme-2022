@@ -23,11 +23,3 @@ const rightButton = document.getElementById(
 const leftButton = document.getElementById(
   "single-product-swiper-button-container-left"
 );
-
-// rightButton.addEventListener("touchstart", (ev) => {
-//   swiper.slideNext();
-// });
-
-// leftButton.addEventListener("touchstart", (ev) => {
-//   swiper.slidePrev();
-// });
