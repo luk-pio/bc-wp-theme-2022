@@ -1009,6 +1009,8 @@ label:focus-within > span.bc-form-label, .input-selected {
 }
 
 .product-categories-container img {
+  height: inherit;
+  width: inherit;
   z-index: 1;
   transition: scale .1s ease-in-out;
   position: relative;
@@ -1016,11 +1018,6 @@ label:focus-within > span.bc-form-label, .input-selected {
 
 .product-categories-container img:hover {
   transform: scale(1.1);
-}
-
-.product-categories-container .homepage-category img {
-  height: inherit;
-  width: inherit;
 }
 
 .product-categories-container .homepage-category img:nth-of-type(2) {
