@@ -163,3 +163,19 @@ function variation_check($active, $variation)
     return $active;
 }
 add_filter('woocommerce_variation_is_active', 'variation_check', 10, 2);
+
+function add_to_cart_animation($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data)
+{
+    $url =  bc_get_attachment_url_by_slug('add-to-cart');
+    # TODO translate
+    $notice_header = "Product added to cart";
+
+    $notice = '<div class="added-to-cart-notice">
+    <div class="added-to-cart-notice-header">' . $notice_header . '</div>
+    <lottie-player class="added-to-cart-animation wp-block-image size-full"
+        background="transparent" speed="1" loop autoplay
+        src="' . $url . '" alt=""></lottie-player>
+    </div>';
+    xoo_wsc_cart()->set_notice($notice);
+}
+add_action('woocommerce_add_to_cart', 'add_to_cart_animation', 10, 6);
