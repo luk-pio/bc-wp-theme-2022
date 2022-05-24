@@ -9,6 +9,7 @@ $roots_includes = array(
   './functions/woocommerce/product-categories.php',
   './functions/woocommerce/archive-product.php',
   './functions/woocommerce/single-product.php',
+  './functions/woocommerce/checkout.php',
 );
 
 foreach ($roots_includes as $file) {

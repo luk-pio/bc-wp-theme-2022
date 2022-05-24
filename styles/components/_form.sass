@@ -1,5 +1,7 @@
 @use "../utils/spacing" as *
 @use "../global/colors"
+@use "../global/mixins"
+
 .wpcf7-form
     p
         display: flex
@@ -15,16 +17,16 @@
     input[type="submit"]
         padding: spacing(1) 0
         width: 100%
-        background-color: black
+        background-color: var(--color-accent)
         border-radius: 4px
-        color: colors.$bc-neon-yellow
+        color: var(--color-text)
         text-transform: uppercase
         max-width: 288px
 
     label
         margin-bottom: spacing(3)
         position: relative
-        border-bottom: 0.6px solid #000000
+        border-bottom: 0.6px solid var(--color-text-secondary)
 
 .bc-input
     width: 100%
@@ -50,7 +52,7 @@
 
 label:focus-within > span.bc-form-label,
 .input-selected
-    transform: translateY(spacing(1.5))
+    transform: translatey(spacing(1.5))
     font-size: 0.8em
     margin-left: 2px
 

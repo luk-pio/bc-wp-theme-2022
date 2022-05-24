@@ -142,10 +142,10 @@
       this[globalName] = mainExports;
     }
   }
-})({"bBp6L":[function(require,module,exports) {
+})({"cwq57":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
-var HMR_PORT = 52200;
+var HMR_PORT = 59867;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "916932b22e4085ab";
 module.bundle.HMR_BUNDLE_ID = "17c354adbf78f9c1";
@@ -531,6 +531,12 @@ jQuery("span:has(input:not(:placeholder-shown)) ~ span").addClass("input-selecte
 jQuery("span > input").focusout(function() {
     if (!placeholderActive(jQuery(this))) jQuery(this).parent().parent().children(".bc-form-label").addClass("input-selected");
     else if (!placeholderActive(jQuery(this))) jQuery(this).parent().parent().children(".bc-form-label").removeClass("input-selected");
+});
+jQuery(".bc-form-control:has(input:not(:placeholder-shown)) label").addClass("wc-input-selected");
+// make Form labels stay above inputs
+jQuery(".bc-form-control input").focusout(function() {
+    if (!placeholderActive(jQuery(this))) jQuery(this).parent().parent().children(".bc-wc-form-label").addClass("wc-input-selected");
+    else if (!placeholderActive(jQuery(this))) jQuery(this).parent().parent().children(".bc-wc-form-label").removeClass("wc-input-selected");
 });
 
 },{}],"7XwEa":[function(require,module,exports) {
@@ -2509,6 +2515,6 @@ function _wrapNativeSuper(Class) {
 }
 exports.default = _wrapNativeSuper;
 
-},{"./_construct":"bLTlt","./_is_native_function":"8d7fi","./_get_prototype_of":"4Z2sn","./_set_prototype_of":"hkEkh","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},["bBp6L","2mMqi"], "2mMqi", "parcelRequire203a")
+},{"./_construct":"bLTlt","./_is_native_function":"8d7fi","./_get_prototype_of":"4Z2sn","./_set_prototype_of":"hkEkh","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},["cwq57","2mMqi"], "2mMqi", "parcelRequire203a")
 
 //# sourceMappingURL=index.js.map

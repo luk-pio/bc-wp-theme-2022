@@ -168,7 +168,7 @@ function add_to_cart_animation($cart_item_key, $product_id, $quantity, $variatio
 {
     $url =  bc_get_attachment_url_by_slug('add-to-cart');
     # TODO translate
-    $notice_header = "Product added to cart";
+    $notice_header = _x("Product added to cart", "bc-theme");
 
     $notice = '<div class="added-to-cart-notice">
     <div class="added-to-cart-notice-header">' . $notice_header . '</div>
