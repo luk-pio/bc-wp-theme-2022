@@ -1913,10 +1913,14 @@ p {
   opacity: 0;
 }
 
-.form-row:focus-within > label, label.wc-input-selected, label[for="billing_country"] {
+.woocommerce-billing-fields__field-wrapper .form-row:focus-within > label, .woocommerce-billing-fields__field-wrapper label.wc-input-selected, .woocommerce-billing-fields__field-wrapper label[for="billing_country"], .woocommerce-shipping-fields__field-wrapper .form-row:focus-within > label, .woocommerce-shipping-fields__field-wrapper label.wc-input-selected, .woocommerce-shipping-fields__field-wrapper label[for="billing_country"] {
   margin-left: 2px;
   font-size: .8em;
-  transform: translateY(-12px);
+  transform: translateY(-14.4px);
+}
+
+.woocommerce form .form-row {
+  padding-left: 0;
 }
 
 .woocommerce-checkout {
@@ -1947,10 +1951,6 @@ p {
 
 .woocommerce-checkout .shipping_address {
   margin-top: 16px;
-}
-
-.woocommerce-checkout-payment {
-  display: none;
 }
 
 .woocommerce form .form-row .required {
@@ -2053,10 +2053,6 @@ p {
   display: flex;
 }
 
-div.paypal-button.paypal-button-shape-pill {
-  border-radius: 4px !important;
-}
-
 .buttons-container {
   border: 1px solid;
 }
@@ -2083,6 +2079,88 @@ div.paypal-button.paypal-button-shape-pill {
   .woocommerce-checkout .bc-order-review {
     width: calc(100% - 72px);
   }
+}
+
+.woocommerce-form-coupon {
+  display: contents;
+}
+
+.woocommerce-form-coupon .form-row-container {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.woocommerce-form-coupon button.button {
+  float: right;
+  text-transform: uppercase;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  box-shadow: 2px 2px 4px var(--color-shadow);
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.woocommerce-form-coupon button.button::selection {
+  background: unset;
+}
+
+.woocommerce-form-coupon input {
+  width: 100%;
+  color: var(--color-text-secondary);
+  border: none;
+  border-bottom: .6px solid var(--color-text-secondary);
+  outline: none;
+  margin-top: 20px;
+  font-size: 1rem;
+  position: relative;
+}
+
+.woocommerce-form-coupon input::-ms-input-placeholder {
+  opacity: 0;
+}
+
+.woocommerce-form-coupon input::placeholder {
+  opacity: 0;
+}
+
+.woocommerce-form-coupon input::-ms-input-placeholder {
+  opacity: 1;
+}
+
+.woocommerce-form-coupon input::placeholder {
+  opacity: 1;
+}
+
+.woocommerce-form__label-for-checkbox span {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.woocommerce-form__label-for-checkbox span a {
+  text-decoration: underline;
+}
+
+.wc_payment_methods, .woocommerce-privacy-policy-text {
+  display: none;
+}
+
+.place-order, .woocommerce-checkout-payment {
+  display: contents;
+}
+
+.bc-checkout-navigation {
+  text-transform: uppercase;
+  align-items: center;
+  margin-left: 48px;
+  text-decoration: underline;
+  display: flex;
+}
+
+.bc-checkout-navigation svg {
+  margin-right: 16px;
 }
 
 /*# sourceMappingURL=style.css.map */

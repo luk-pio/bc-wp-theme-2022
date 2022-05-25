@@ -1,0 +1,193 @@
+@use "../utils/spacing" as *
+@use "../global/colors"
+@use "../global/mixins"
+
+.woocommerce-billing-fields
+    h3
+        margin-bottom: spacing(2)
+.woocommerce-billing-fields__field-wrapper, .woocommerce-shipping-fields__field-wrapper
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 20px
+    @media (max-width: 600px)
+        grid-template-columns: 1fr
+    p.form-row
+        position: relative
+        padding-top: spacing(2)
+    .bc-wc-form-label
+        position: absolute
+        top: 7px
+        transition-duration: 300ms
+        color: colors.$font-secondary
+        z-index: 1
+        &[for="billing_country"], &[for="shipping_country"]
+            transform: translatey(spacing(-2.5))
+            font-size: 0.8em
+            width: 200%
+    input
+        @include mixins.bc-input()
+        position: relative
+        border-bottom: 0.6px solid var(--color-text-secondary)
+
+    .form-row:focus-within > label,
+    label.wc-input-selected,
+    label[for="billing_country"]
+        transform: translatey(spacing(-1.8))
+        font-size: 0.8em
+        margin-left: 2px
+
+.woocommerce form .form-row
+    padding-left: 0
+
+.woocommerce-checkout
+    display: flex
+
+    h3
+        font-size: 20px
+        margin-bottom: spacing(4)
+        text-transform: uppercase
+
+    .col2-set
+        display: flex
+        flex-direction: column
+        margin: spacing(6)
+        max-width: 800px
+        .col-1
+            width: 100%
+        .col-2
+            margin-top: spacing(4)
+            width: 100%
+    .shipping_address
+        margin-top: spacing(2)
+
+.woocommerce form .form-row .required
+    color: var(--color-warning-red)
+
+.bc-order-review
+    margin: spacing(6)
+    width: 30%
+    max-width: 800px
+    min-width: 375px
+
+.shop_table.woocommerce-checkout-review-order-table
+    font-size: 16px
+    font-weight: 400
+    text-transform: uppercase
+    color: var(--color-text-secondary)
+    margin: 0
+    border: 0px
+    th, td
+        padding: 12px 0
+    .cart_item, .cart-subtotal
+        display: flex
+        justify-content: space-between
+
+    .product-total
+        text-align: end
+        width: 30%
+
+.cart-subtotal, .order-total
+    color: var(--color-text-light)
+    margin: spacing(4) 0
+    margin-bottom: spacing(8)
+    padding-top: spacing(1)
+    border-top: var(--border-light)
+
+    font-weight: 500
+    .woocommerce-Price-amount
+        color: var(--color-text)
+
+.woocommerce-shipping-totals
+    margin-bottom: spacing(4)
+    .shipping-option
+        position: relative
+        height: spacing(6)
+        label
+            position: absolute
+            left: 0
+            padding-left: spacing(6)
+            padding-right: spacing(3)
+            width: calc(100% - spacing(9))
+            height: 100%
+            display: flex
+            align-items: center
+        input
+            position: absolute
+            top: 14px
+            left: 12px
+        input:checked + label
+            border: 1px solid var(--color-text)
+
+.woocommerce ul#shipping_method li label
+    display: flex
+    justify-content: space-between
+
+.order-total
+    display: flex
+    justify-content: space-between
+    margin: spacing(6) 0
+    padding-top: spacing(1)
+    border-top: var(--border-light)
+
+.buttons-container
+    border: 1px solid
+
+@media (min-width: 1200px)
+    .woocommerce-checkout
+        flex-direction: row
+        .bc-order-review
+            width: 30%
+
+@media (max-width: 1200px)
+    .woocommerce-checkout
+        flex-direction: column
+        .col2-set
+            width: calc(100% - 96px)
+        .bc-order-review
+            width: calc(100% - spacing(9))
+
+.woocommerce-form-coupon
+    display: contents
+    .form-row-container
+        display: flex
+        justify-content: space-between
+        align-items: center
+    button.button
+        float: right
+        font-weight: 500
+        font-size: 14px
+        @include mixins.bc-button
+
+    input
+        @include mixins.bc-input()
+        color: var(--color-text-secondary)
+        position: relative
+        border-bottom: 0.6px solid var(--color-text-secondary)
+        &::placeholder
+            opacity: 1
+
+.woocommerce-form__label-for-checkbox
+    span
+        font-size: 12px
+        text-transform: uppercase
+        a
+            text-decoration: underline
+
+.wc_payment_methods
+    display: none
+.woocommerce-privacy-policy-text
+    display: none
+.place-order
+    display: contents
+
+.woocommerce-checkout-payment
+    display: contents
+
+.bc-checkout-navigation
+    display: flex
+    align-items: center
+    text-transform: uppercase
+    text-decoration: underline
+    margin-left: spacing(6)
+    svg
+        margin-right: spacing(2)
