@@ -59,6 +59,10 @@
 #footer-social
     display: grid
     @include layout.group(spacing(1.5))
+    .social-icon
+        svg
+            width: 32px
+            height: 32px
 
 #menu-footer-menu
     white-space: nowrap
@@ -68,7 +72,7 @@
     grid-row-gap: spacing(3)
     grid-column-gap: 50px
     width: fit-content
-    font-size: 0.8rem
+    font-size: 1rem
     @include breakpoints.mobile
         margin-top: spacing(3)
         grid-column-gap: 50px
@@ -76,7 +80,7 @@
 #footer-bc-logo-container
     .bc-logo-part
         svg
-            height: 14px
+            height: 19px
             width: auto
 
 .social-icon
@@ -87,12 +91,11 @@
     text-align: end
     align-self: flex-end
     margin-top: spacing(5)
-    font-size: 12px
-    @include layout.group(spacing(1), row)
+    @include layout.group(spacing(2), row)
     justify-items: flex-end
     @include breakpoints.tablet
-        grid-auto-flow: column
-        justify-items: center
+        grid-auto-flow: row
+        justify-items: end
     a
         font-weight: 500
 

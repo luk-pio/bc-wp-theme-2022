@@ -2,8 +2,6 @@
 @use "../global/fonts"
 @use "../global/mixins"
 @use "../utils/spacing" as * 
-// .xoo-wsc-cart-active .xoo-wsc-basket
-//     right: 370px
 .added_to_cart
     display: none
 .xoo-wsc-header
@@ -16,6 +14,28 @@
 
 .xoo-wsc-container
     text-transform: uppercase
+    span.xoo-wsch-close
+        right: 16px
+    .xoo-wsc-basket
+        svg
+            height: 32px
+            width: 32px
+    #bc-header-cart
+        transition: unset
+        color: var(--color-text)
+        top: -5px
+        right: 0px
+        background-color: unset
+        bottom: unset
+        box-shadow: unset
+        z-index: -1
+        .xoo-wsc-items-count
+            color: var(--color-text)
+            background: unset
+            top: 0px
+            left: 37px
+        @include breakpoints.tablet-or-desktop
+            right: 32px
 
 .added-to-cart-notice
     background: white
@@ -27,6 +47,7 @@
     .added-to-cart-animation
         margin-left: -36px
         width: 130%
+        padding-bottom: 32px
         margin-bottom: 20px
 .xoo-wsc-img-col
     padding-top: spacing(2)

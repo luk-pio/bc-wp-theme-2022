@@ -37,7 +37,7 @@
             </div>
             <div id="footer-copy">
                 <div id="footer-designed-by"><?php _e("Designed & developed by ", "bc-theme") ?>
-                    <a id="wiseculture-url" href="https://www.wiseculture.space/">WiseCulture.Space</a>
+                    <a id="wiseculture-url" href="https://www.wiseculture.space/" target="_blank">WiseCulture.Space</a>
                 </div>
                 <div id="footer-copywrite"><?php _e("© 2022 BERENIKA CZARNOTA", "bc-theme") ?></div>
             </div>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Displayed when no products are found matching the current query
  *
@@ -15,7 +16,7 @@
  * @version 2.0.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 ?>
-<p class="woocommerce-info"><?php esc_html_e( 'No products were found matching your selection.', 'woocommerce' ); ?></p>
+<p class="bc-no-products-found"><?php esc_html_e('Sorry, no products were found!', 'woocommerce'); ?></p>

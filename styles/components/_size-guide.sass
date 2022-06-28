@@ -1,0 +1,22 @@
+@use "../utils/spacing" as * 
+@use "../utils/layout"
+@use "../utils/breakpoints"
+@use "../animations/rotate"
+
+.size-guide-container
+    text-transform: uppercase
+    position: relative
+
+.size-guide-dropdown
+    position: absolute
+    -webkit-clip-path: inset(0 -1000px -1000px -100px)
+    clip-path: inset(0 -1000px -1000px -100px)
+    background-color: var(--color-background)
+    top: 45px
+    padding: spacing(1) spacing(0.5)
+    box-shadow: 0 0 5px var(--color-shadow)
+    z-index: 2
+    img
+        max-width: 40vw
+        @include breakpoints.mobile
+            max-width: 90vw

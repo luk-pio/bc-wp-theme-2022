@@ -9,11 +9,9 @@ const swiper = new Swiper(
     },
     grabCursor: false,
     spaceBetween: 0,
-    breakpoints: {},
     breakpoints: {
       840: {
         slidesPerView: 2,
-        pagination: false,
       },
     },
   }

@@ -1,0 +1,19 @@
+@use "../utils/layout"
+@use "../utils/spacing" as *
+@use "../utils/breakpoints"
+@use "../global/fonts"
+@use "../global/mixins"
+
+.not-found
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    margin-top: spacing(8)
+    h1
+        font-size: 48px
+        font-weight: 500
+    p
+        font-size: 20px
+        font-weight: 400
+        margin-top: spacing(2)

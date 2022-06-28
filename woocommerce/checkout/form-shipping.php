@@ -38,12 +38,12 @@ defined('ABSPATH') || exit;
 
         <div class="woocommerce-shipping-fields__field-wrapper">
             <?php
-				$fields = $checkout->get_checkout_fields('shipping');
+                $fields = $checkout->get_checkout_fields('shipping');
 
-				foreach ($fields as $key => $field) {
-					woocommerce_form_field($key, $field, $checkout->get_value($key));
-				}
-				?>
+                foreach ($fields as $key => $field) {
+                    woocommerce_form_field($key, $field, $checkout->get_value($key));
+                }
+                ?>
         </div>
 
         <?php do_action('woocommerce_after_checkout_shipping_form', $checkout); ?>
@@ -73,3 +73,13 @@ defined('ABSPATH') || exit;
 
     <?php do_action('woocommerce_after_order_notes', $checkout); ?>
 </div>
+
+<?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
+
+<?php do_action('woocommerce_review_order_before_shipping'); ?>
+
+<?php wc_cart_totals_shipping_html(); ?>
+
+<?php do_action('woocommerce_review_order_after_shipping'); ?>
+
+<?php endif; ?>

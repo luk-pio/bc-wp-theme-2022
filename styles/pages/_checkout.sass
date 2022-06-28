@@ -76,6 +76,10 @@
     color: var(--color-text-secondary)
     margin: 0
     border: 0px
+    .cart-items
+        display: flex
+        flex-direction: column
+        gap: spacing(2)
     th, td
         padding: 12px 0
     .cart_item, .cart-subtotal
@@ -184,6 +188,7 @@
     display: contents
 
 .bc-checkout-navigation
+    margin-top: spacing(4)
     display: flex
     align-items: center
     text-transform: uppercase
@@ -191,3 +196,6 @@
     margin-left: spacing(6)
     svg
         margin-right: spacing(2)
+
+.woocommerce-additional-fields
+    margin-bottom: spacing(6)

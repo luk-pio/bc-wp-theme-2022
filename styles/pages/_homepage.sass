@@ -64,7 +64,7 @@
             padding: 4px 32px
 
         &:hover
-            background: var(--color-shadow)
+            background: unset
             border: 2px solid var(--color-accent)
             color: var(--color-accent)
 
@@ -72,12 +72,12 @@
     margin-top: calc(100vh + spacing(8))
 
 .materials-container
-    margin: 0 spacing(4)
+    margin: 0 spacing(4) spacing(20)
 .materials-inner-container
     display: flex
     flex-direction: column
     align-items: center
-    gap: 80px
+    gap: spacing(10)
     max-width: 1000px
     margin: 0 auto
     text-align: center
@@ -86,12 +86,10 @@
         font-size: 32px
         font-weight: 300
         text-transform: uppercase
-    h3
-        font-size: 24px
         b
             font-weight: 600
     p
-        font-size: 16px
+        font-size: 18px
         max-width: 80ch
         text-align: justify
     figure

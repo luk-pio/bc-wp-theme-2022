@@ -29,14 +29,19 @@
         margin: spacing(1) 0
         padding: spacing(0.8) 0
         font-weight: 500
-        font-size: 0.7rem
+        font-size: 1rem
         border-radius: 4px
         color: colors.$black
         margin-left: spacing(2)
+        @include breakpoints.mobile
+            font-size: 12px
 
     .price
         font-weight: 300
         margin-left: spacing(2)
+        font-size: 1rem
+        @include breakpoints.mobile
+            font-size: 12px
 
     .product-description
         max-width: 80%
@@ -52,19 +57,46 @@
         align-items: flex-start
 
         &:hover
-            img
-                &:nth-of-type(2)
-                    opacity: 1
+            .bc-product-thumbnail-wrapper
+                img
+                    &:nth-of-type(2)
+                        opacity: 1
 
-        img
-            transition: all 0.2s ease
-            width: 100%
-            height: auto
-            margin-bottom: spacing(2)
-            object-fit: cover
-            padding: 0
-            margin: 0 auto
-            &:nth-of-type(2)
-                opacity: 0
-                position: absolute
-                top: 0
+        .bc-product-thumbnail-wrapper
+            img
+                transition: all 0.2s ease
+                width: 100%
+                height: auto
+                margin-bottom: spacing(2)
+                object-fit: cover
+                padding: 0
+                margin: 0 auto
+                &:nth-of-type(2)
+                    opacity: 0
+                    position: absolute
+                    top: 0
+                    right: 0
+
+.bc-product-waiting-list-container
+    height: 100%
+    top: 0
+    width: 100%
+    position: absolute
+    display: flex
+    justify-content: center
+    flex-direction: column
+    z-index: 10
+.bc-product-waiting-list
+    @include mixins.bc-button
+    font-size: 20px
+    font-weight: 400
+    padding: 10px 54px
+    height: min-content
+    margin: auto
+    @include breakpoints.mobile
+        font-size: 14px
+        padding: 10px 36px
+    &:hover
+        background: unset
+        border: 2px solid var(--color-accent)
+        color: var(--color-accent)

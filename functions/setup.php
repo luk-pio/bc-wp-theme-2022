@@ -7,6 +7,7 @@ function setup()
 {
     add_theme_support("post-thumbnails");
     // Add dynamic title tag support
+    add_filter('facebook_for_woocommerce_integration_pixel_enabled', '__return_false');
     add_theme_support("title-tag");
     add_image_sizes();
 }
@@ -15,7 +16,7 @@ add_action("after_setup_theme", "setup");
 
 function add_image_sizes()
 {
-    add_image_size('product-image', 800, 1000, array('center', 'center'));
+    add_image_size('product-image', 600, 900, array('center', 'center'));
 }
 
 function bc_theme_mods()
@@ -80,8 +81,6 @@ function add_file_types_to_uploads($file_types)
     $new_filetypes['json'] = 'application/json';
     $file_types = array_merge($file_types, $new_filetypes);
 
-
-
     return $file_types;
 }
 add_filter('upload_mimes', 'add_file_types_to_uploads');
@@ -97,9 +96,9 @@ add_action("after_setup_theme", "woocommerce_setup");
 function mytheme_add_woocommerce_support()
 {
     add_theme_support('woocommerce', array(
-        'thumbnail_image_width' => 800,
-        'gallery_thumbnail_image_width' => 800,
-        'single_image_width' => 800,
+        'thumbnail_image_width' => 600,
+        'gallery_thumbnail_image_width' => 600,
+        'single_image_width' => 600,
 
         'product_grid' => array(
             'default_rows' => 3,
@@ -115,22 +114,22 @@ add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
 
 add_filter('woocommerce_get_image_size_gallery_thumbnail', function ($size) {
     return array(
-        'width' => 800,
-        'height' => 1000,
+        'width' => 600,
+        'height' => 900,
         'crop' => 1,
     );
 });
 add_filter('woocommerce_get_image_size_thumbnail', function ($size) {
     return array(
-        'width' => 800,
-        'height' => 1000,
+        'width' => 600,
+        'height' => 900,
         'crop' => 1,
     );
 });
 add_filter('woocommerce_get_image_size_single', function ($size) {
     return array(
-        'width' => 800,
-        'height' => 1000,
+        'width' => 600,
+        'height' => 800,
         'crop' => 1,
     );
 });

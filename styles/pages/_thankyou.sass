@@ -1,0 +1,25 @@
+@use "../utils/layout"
+@use "../utils/spacing" as *
+@use "../utils/breakpoints"
+@use "../global/fonts"
+@use "../global/mixins"
+
+.woocommerce-order
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    margin-top: spacing(8)
+    h2
+        font-size: 24px
+        font-weight: 500
+        text-transform: uppercase
+        margin-bottom: 20px
+
+    p
+        font-size: 20px
+        font-weight: 400
+
+    .thank-you-image
+        max-width: 240px
+        margin-bottom: spacing(10)

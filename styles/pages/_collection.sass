@@ -1,0 +1,31 @@
+@use "../utils/layout"
+@use "../utils/spacing" as *
+@use "../utils/breakpoints"
+@use "../global/fonts"
+@use "../global/mixins"
+
+#collection-main
+    margin: spacing(8) spacing(4)
+    .wp-block-columns
+        margin: 0 0 spacing(20)
+        display: grid
+        grid-auto-flow: row
+        justify-content: center
+        align-items: center
+        &.bc-two-col
+            grid-template-columns: repeat(2, 1fr)
+            @include breakpoints.mobile
+                grid-template-columns: 1fr
+        &.bc-four-col
+            grid-template-columns: repeat(4, 1fr)
+            @include breakpoints.mobile
+                grid-template-columns: repeat(2, 1fr)
+
+        .bc-collection-smaller
+            padding: 48px
+
+    p
+        max-width: 800px
+        margin: auto
+        margin-bottom: 48px
+        text-align: justify

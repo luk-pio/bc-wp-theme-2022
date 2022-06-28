@@ -12,12 +12,16 @@
         margin: 120px auto
 
     .bc-divider-container
-        margin: 0 spacing(8)
+        margin: spacing(20) spacing(8)
+        @include breakpoints.mobile
+            margin: spacing(10) spacing(2)
+        svg
+            width: 100%
 
     .bc-page-meta
         margin: spacing(6) spacing(6) spacing(4)
         @include breakpoints.mobile
-            margin: spacing(6) spacing(2) 0
+            margin: spacing(6) spacing(2) spacing(4)
 
 p
     font-size: fonts.$font-regular

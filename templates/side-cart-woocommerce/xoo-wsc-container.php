@@ -15,7 +15,7 @@
 
 
 if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly
+    exit; // Exit if accessed directly
 }
 
 extract(Xoo_Wsc_Template_Args::cart_container());
@@ -24,7 +24,9 @@ extract(Xoo_Wsc_Template_Args::cart_container());
 
 <div class="xoo-wsc-container">
 
-    <div class="xoo-wsc-basket">
+    <div id="bc-header-cart" class="xoo-wsc-basket <?php if (bc_is_home_page()) {
+                                                        echo 'homepage';
+                                                    } ?>">
 
         <?php if ($showCount === "yes") : ?>
         <span class="xoo-wsc-items-count"><?php echo xoo_wsc_cart()->get_cart_count() ?></span>

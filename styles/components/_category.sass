@@ -8,6 +8,7 @@
 .product-categories-container
     display: grid
     grid-row-gap: spacing(8)
+    grid-column-gap: spacing(4)
     grid-auto-flow: row
     color: colors.$black
     max-width: $max-content-width
@@ -20,8 +21,10 @@
         grid-template-columns: repeat(2, 1fr)
         margin-right: auto
         margin-left: auto
+        grid-column-gap: 0
     @media (max-width: 420px)
         grid-template-columns: repeat(1, 1fr)
+        grid-column-gap: 0
 
     li
         display: flex

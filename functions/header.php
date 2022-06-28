@@ -17,7 +17,7 @@ function bc_get_lang_switcher()
         </div>
     </div>
     <div id="language-dropdown-hover-filler"></div>
-    <ul x-show="open" x-transition.opacity class="language-dropdown-list">
+    <ul x-show="open" x-transition.opacity class="language-dropdown-list" x-cloak>
         <?php foreach ($languages_array as $name => $item) {
             ?>
         <?php
@@ -100,9 +100,8 @@ function bc_mobile_menu()
             </div>
         </div>
     </div>
+    <?php bc_get_lang_switcher(); ?>
 </div>
-
-
 <?php
 }
 
@@ -125,7 +124,7 @@ function bc_get_desktop_nav()
 <li class="desktop-shop-dropdown" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
     <?php echo $title ?>
     <div class="desktop-category-hover-filler"></div>
-    <div class="desktop-category-menu" x-show="open" x-transition.opacity>
+    <div class="desktop-category-menu" x-show="open" x-transition.opacity x-cloak>
         <div class="desktop-category-filler"></div>
         <?php echo bc_category_menu() ?>
     </div>
